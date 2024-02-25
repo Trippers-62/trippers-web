@@ -6,10 +6,11 @@
     <title>Trippers</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<body>
+<body class="mb-5">
 <div class="container">
     <h1 class="mt-5 m-3">항공권 및 숙박 검색 서비스</h1>
-    <form id="reservationForm" class="m-3">
+    <form id="reservationForm" class="m-3" action="/search/result" th:method="get">
+
         <div class="form-group">
             <label>여행 유형:</label><br>
             <div class="form-check form-check-inline">
@@ -21,33 +22,61 @@
                 <label for="oneWay" class="form-check-label">편도</label>
             </div>
         </div>
-        <div class="form-group">
-            <label for="country">출발 나라:</label>
-            <select id="country" class="form-control">
-                <option value="korea">대한민국</option>
-                <option value="japan">일본</option>
-                <!-- Add more countries as needed -->
-            </select>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="departureCountry">출발 나라:</label>
+                    <select name="departureCountry" id="departureCountry" class="form-control">
+                        <option value="korea">대한민국</option>
+                        <option value="japan">일본</option>
+                        <!-- Add more countries as needed -->
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="departureCity">출발 도시:</label>
+                    <select name="departureCity" id="departureCity" class="form-control">
+                        <!-- Options will be populated based on the selected country using JavaScript -->
+                    </select>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="city">도착 도시:</label>
-            <select id="city" class="form-control">
-                <!-- Options will be populated based on the selected country using JavaScript -->
-            </select>
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="arrivalCountry">도착 나라:</label>
+                    <select name="arrivalCountry" id="arrivalCountry" class="form-control">
+                        <option value="korea">대한민국</option>
+                        <option value="japan">일본</option>
+                        <!-- Add more countries as needed -->
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="arrivalCity">도착 도시:</label>
+                    <select name="arrivalCity" id="arrivalCity" class="form-control">
+                        <!-- Options will be populated based on the selected country using JavaScript -->
+                    </select>
+                </div>
+            </div>
         </div>
+
         <div class="form-group">
             <label for="departureDate">출발 날짜:</label>
-            <input type="date" id="departureDate" class="form-control">
+            <input type="date" name="departureDate" id="departureDate" class="form-control">
         </div>
         <div class="form-group">
             <label for="returnDate">도착 날짜:</label>
-            <input type="date" id="returnDate" class="form-control">
+            <input type="date" name="returnDate" id="returnDate" class="form-control">
         </div>
         <div class="form-group">
             <label for="budget">예산:</label>
-            <input type="number" id="budget" class="form-control">
+            <input type="number" name="budget" id="budget" class="form-control">
         </div>
         <button type="submit" class="btn btn-primary">검색</button>
+
     </form>
 </div>
 <script src="js/script.js"></script>

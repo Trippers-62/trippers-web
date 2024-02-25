@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flight and Accommodation Results</title>
+    <title>Trippers</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<body>
+<body class="mb-5">
 <div class="container">
     <h1 class="mt-5 m-3">항공권 및 숙박 검색 결과</h1>
 
     <!-- Flight Results -->
     <h2 class="mt-5 m-3">항공권 결과</h2>
-    <h5 class="mt-1 m-3">출발 도시 : <span id="departureCity"></span></h5>
-    <h5 class="mt-1 m-3">도착 도시 : <span id="arrivalCity"></span></h5>
+    <h5 class="mt-1 m-3">출발 도시 : <span id="departureCity" th:text="${departureCity}"></span></h5>
+    <h5 class="mt-1 m-3">도착 도시 : <span id="arrivalCity" th:text="${arrivalCity}"></span></h5>
 
     <table class="table m-3">
         <thead>
@@ -26,11 +26,11 @@
         </thead>
         <tbody>
         <!-- Flight results rows will be dynamically populated here -->
-        <tr>
-            <td>출발날짜1</td>
-            <td>가격1</td>
-            <td>항공사1</td>
-            <td>환승횟수1</td>
+        <tr th:each="flight : ${flights}">
+            <td th:text="${flight.departureDatetime}">출발날짜1</td>
+            <td th:text="${flight.price}">가격1</td>
+            <td th:text="${flight.airline}">항공사1</td>
+            <td th:text="${flight.transferCount}">환승횟수1</td>
         </tr>
         <!-- Add more rows as needed -->
         </tbody>
@@ -38,10 +38,11 @@
 
     <!-- Accommodation Results -->
     <h2 class="mt-5 m-3">숙박 결과</h2>
+    <h5 class="mt-1 m-3">도착 도시 : <span th:text="${arrivalCity}"></span></h5>
+
     <table class="table m-3">
         <thead>
         <tr>
-            <th scope="col">도시</th>
             <th scope="col">위도</th>
             <th scope="col">경도</th>
             <th scope="col">가격</th>
@@ -52,14 +53,13 @@
         </thead>
         <tbody>
         <!-- Accommodation results rows will be dynamically populated here -->
-        <tr>
-            <td>도시1</td>
-            <td>위도1</td>
-            <td>경도1</td>
-            <td>가격1</td>
-            <td>평점1</td>
-            <td>체크인날짜1</td>
-            <td>체크아웃날짜1</td>
+        <tr th:each="accomodation : ${accomodations}">
+            <td th:text="${accomodation.latitude}">위도1</td>
+            <td th:text="${accomodation.longitude}">경도1</td>
+            <td th:text="${accomodation.price}">가격1</td>
+            <td th:text="${accomodation.rating}">평점1</td>
+            <td th:text="${accomodation.checkinDate}">체크인날짜1</td>
+            <td th:text="${accomodation.checkoutDate}">체크아웃날짜1</td>
         </tr>
         <!-- Add more rows as needed -->
         </tbody>
@@ -67,6 +67,8 @@
 </div>
 </body>
 </html>
+
+
 
 <!--<!DOCTYPE html>-->
 <!--<html lang="en">-->

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trippers</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <h1 class="mt-5 mb-5">항공권 및 숙박 검색 서비스</h1>
+            <!-- 검색하기 버튼 -->
+            <button type="button" class="btn btn-primary btn-lg btn-block"
+                    onclick="location.href='search.html'"
+                    th:onclick="|location.href='@{/search}'|">검색하기</button>
+            <!-- 기타 컨텐츠 추가 가능 -->
+        </div>
+    </div>
+
+<!--    <form id="reservationForm" class="m-3" method="post">-->
+
+<!--        <div class="form-group">-->
+<!--            <label>여행 유형:</label><br>-->
+<!--            <div class="form-check form-check-inline">-->
+<!--                <input type="radio" id="roundTrip" name="tripType" value="roundTrip" class="form-check-input" checked>-->
+<!--                <label for="roundTrip" class="form-check-label">왕복</label>-->
+<!--            </div>-->
+<!--            <div class="form-check form-check-inline">-->
+<!--                <input type="radio" id="oneWay" name="tripType" value="oneWay" class="form-check-input">-->
+<!--                <label for="oneWay" class="form-check-label">편도</label>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--            <div class="col">-->
+<!--                <div class="form-group">-->
+<!--                    <label for="departureCountry">출발 나라:</label>-->
+<!--                    <select id="departureCountry" class="form-control">-->
+<!--                        <option value="korea">대한민국</option>-->
+<!--                        <option value="japan">일본</option>-->
+<!--                        &lt;!&ndash; Add more countries as needed &ndash;&gt;-->
+<!--                    </select>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col">-->
+<!--                <div class="form-group">-->
+<!--                    <label for="departureCity">출발 도시:</label>-->
+<!--                    <select id="departureCity" class="form-control">-->
+<!--                        &lt;!&ndash; Options will be populated based on the selected country using JavaScript &ndash;&gt;-->
+<!--                    </select>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--            <div class="col">-->
+<!--                <div class="form-group">-->
+<!--                    <label for="arrivalCountry">도착 나라:</label>-->
+<!--                    <select id="arrivalCountry" class="form-control">-->
+<!--                        <option value="korea">대한민국</option>-->
+<!--                        <option value="japan">일본</option>-->
+<!--                        &lt;!&ndash; Add more countries as needed &ndash;&gt;-->
+<!--                    </select>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col">-->
+<!--                <div class="form-group">-->
+<!--                    <label for="arrivalCity">도착 도시:</label>-->
+<!--                    <select id="arrivalCity" class="form-control">-->
+<!--                        &lt;!&ndash; Options will be populated based on the selected country using JavaScript &ndash;&gt;-->
+<!--                    </select>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label for="departureDate">출발 날짜:</label>-->
+<!--            <input type="date" id="departureDate" class="form-control">-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label for="returnDate">도착 날짜:</label>-->
+<!--            <input type="date" id="returnDate" class="form-control">-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label for="budget">예산:</label>-->
+<!--            <input type="number" id="budget" class="form-control">-->
+<!--        </div>-->
+<!--        <button type="submit" class="btn btn-primary">검색</button>-->
+<!--    </form>-->
+</div>
+<script src="../static/js/script.js"></script>
+</body>
+</html>
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Flight and Accommodation Results</title>-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <h1 class="mt-5 m-3">항공권 및 숙박 검색 결과</h1>-->
+
+<!--    &lt;!&ndash; Flight Results &ndash;&gt;-->
+<!--    <h2 class="mt-5 m-3">항공권 결과</h2>-->
+<!--    <h5 class="mt-1 m-3">출발 도시 : <span id="departureCity"></span></h5>-->
+<!--    <h5 class="mt-1 m-3">도착 도시 : <span id="arrivalCity"></span></h5>-->
+
+<!--    <table class="table m-3">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th scope="col">출발 날짜/시간</th>-->
+<!--            <th scope="col">가격</th>-->
+<!--            <th scope="col">항공사</th>-->
+<!--            <th scope="col">환승 횟수</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        &lt;!&ndash; Flight results rows will be dynamically populated here &ndash;&gt;-->
+<!--        <tr>-->
+<!--            <td>출발날짜1</td>-->
+<!--            <td>가격1</td>-->
+<!--            <td>항공사1</td>-->
+<!--            <td>환승횟수1</td>-->
+<!--        </tr>-->
+<!--        &lt;!&ndash; Add more rows as needed &ndash;&gt;-->
+<!--        </tbody>-->
+<!--    </table>-->
+
+<!--    &lt;!&ndash; Accommodation Results &ndash;&gt;-->
+<!--    <h2 class="mt-5 m-3">숙박 결과</h2>-->
+<!--    <table class="table m-3">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th scope="col">도시</th>-->
+<!--            <th scope="col">위도</th>-->
+<!--            <th scope="col">경도</th>-->
+<!--            <th scope="col">가격</th>-->
+<!--            <th scope="col">평점</th>-->
+<!--            <th scope="col">체크인 날짜/시간</th>-->
+<!--            <th scope="col">체크아웃 날짜/시간</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        &lt;!&ndash; Accommodation results rows will be dynamically populated here &ndash;&gt;-->
+<!--        <tr>-->
+<!--            <td>도시1</td>-->
+<!--            <td>위도1</td>-->
+<!--            <td>경도1</td>-->
+<!--            <td>가격1</td>-->
+<!--            <td>평점1</td>-->
+<!--            <td>체크인날짜1</td>-->
+<!--            <td>체크아웃날짜1</td>-->
+<!--        </tr>-->
+<!--        &lt;!&ndash; Add more rows as needed &ndash;&gt;-->
+<!--        </tbody>-->
+<!--    </table>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Flight and Accommodation Results</title>-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <h1 class="mt-5 m-3">항공권 및 숙박 검색 결과</h1>-->
+
+<!--    &lt;!&ndash; Flight Tickets &ndash;&gt;-->
+<!--    <h2 class="mt-5 m-3">항공권 티켓</h2>-->
+<!--    <div class="row">-->
+<!--        &lt;!&ndash; Flight ticket cards will be dynamically populated here &ndash;&gt;-->
+<!--        <div class="col-md-4 mb-4">-->
+<!--            <div class="card">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">출발 도시 - 도착 도시</h5>-->
+<!--                    <p class="card-text">출발 날짜/시간</p>-->
+<!--                    <p class="card-text">가격</p>-->
+<!--                    <p class="card-text">항공사</p>-->
+<!--                    <p class="card-text">환승 횟수</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; Add more flight ticket cards as needed &ndash;&gt;-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Accommodation Cards &ndash;&gt;-->
+<!--    <h2 class="mt-5 m-3">숙박 정보</h2>-->
+<!--    <div class="row">-->
+<!--        &lt;!&ndash; Accommodation cards will be dynamically populated here &ndash;&gt;-->
+<!--        <div class="col-md-4 mb-4">-->
+<!--            <div class="card">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 class="card-title">도시</h5>-->
+<!--                    <p class="card-text">위도</p>-->
+<!--                    <p class="card-text">경도</p>-->
+<!--                    <p class="card-text">가격</p>-->
+<!--                    <p class="card-text">평점</p>-->
+<!--                    <p class="card-text">체크인 날짜/시간</p>-->
+<!--                    <p class="card-text">체크아웃 날짜/시간</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; Add more accommodation cards as needed &ndash;&gt;-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
