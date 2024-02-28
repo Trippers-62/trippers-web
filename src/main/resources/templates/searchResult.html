@@ -1,74 +1,107 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trippers</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body class="mb-5">
-<div class="container">
-    <h1 class="mt-5 m-3">항공권 및 숙박 검색 결과</h1>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/src/main/resources/static/css/trippers.css" />
+  </head>
+  <body class="mb-5">
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="index.html">
+              <img
+                src="/src/main/resources/static/img/logo-removeword.png"
+                alt="로고"
+                class="logo"
+              />
+              홈</a
+            >
+          </li>
+          <!-- index.html -->
+          <li><a href="search.html">일정 짜기</a></li>
+          <!-- search.html -->
+          <li><a href="search.html">추천 받기</a></li>
+          <!-- search.html -->
+          <li><a href="flight_calender.html">날짜별 최저가</a></li>
+          <!-- 출발 날짜별 항공권 가격 -->
+          <li><a href="exchange_rate.html">실시간 환율정보</a></li>
+          <!-- 환율변동 대시보드 -->
+        </ul>
+      </nav>
+    </header>
+    <div class="container">
+      <h1 class="mt-5 m-3">항공권 및 숙박 검색 결과</h1>
 
-    <!-- Flight Results -->
-    <h2 class="mt-5 m-3">항공권 결과</h2>
-    <h5 class="mt-1 m-3">출발 도시 : <span id="departureCity" th:text="${departureCity}"></span></h5>
-    <h5 class="mt-1 m-3">도착 도시 : <span id="arrivalCity" th:text="${arrivalCity}"></span></h5>
+      <!-- Flight Results -->
+      <h2 class="mt-5 m-3">항공권 결과</h2>
+      <h5 class="mt-1 m-3">
+        출발 도시 : <span id="departureCity" th:text="${departureCity}"></span>
+      </h5>
+      <h5 class="mt-1 m-3">
+        도착 도시 : <span id="arrivalCity" th:text="${arrivalCity}"></span>
+      </h5>
 
-    <table class="table m-3">
+      <table class="table m-3">
         <thead>
-        <tr>
+          <tr>
             <th scope="col">출발 날짜/시간</th>
             <th scope="col">가격</th>
             <th scope="col">항공사</th>
             <th scope="col">환승 횟수</th>
-        </tr>
+          </tr>
         </thead>
         <tbody>
-        <!-- Flight results rows will be dynamically populated here -->
-        <tr th:each="flight : ${flights}">
+          <!-- Flight results rows will be dynamically populated here -->
+          <tr th:each="flight : ${flights}">
             <td th:text="${flight.departureDatetime}">출발날짜1</td>
             <td th:text="${flight.price}">가격1</td>
             <td th:text="${flight.airline}">항공사1</td>
             <td th:text="${flight.transferCount}">환승횟수1</td>
-        </tr>
-        <!-- Add more rows as needed -->
+          </tr>
+          <!-- Add more rows as needed -->
         </tbody>
-    </table>
+      </table>
 
-    <!-- Accommodation Results -->
-    <h2 class="mt-5 m-3">숙박 결과</h2>
-    <h5 class="mt-1 m-3">도착 도시 : <span th:text="${arrivalCity}"></span></h5>
+      <!-- Accommodation Results -->
+      <h2 class="mt-5 m-3">숙박 결과</h2>
+      <h5 class="mt-1 m-3">
+        도착 도시 : <span th:text="${arrivalCity}"></span>
+      </h5>
 
-    <table class="table m-3">
+      <table class="table m-3">
         <thead>
-        <tr>
+          <tr>
             <th scope="col">위도</th>
             <th scope="col">경도</th>
             <th scope="col">가격</th>
             <th scope="col">평점</th>
             <th scope="col">체크인 날짜/시간</th>
             <th scope="col">체크아웃 날짜/시간</th>
-        </tr>
+          </tr>
         </thead>
         <tbody>
-        <!-- Accommodation results rows will be dynamically populated here -->
-        <tr th:each="accomodation : ${accomodations}">
+          <!-- Accommodation results rows will be dynamically populated here -->
+          <tr th:each="accomodation : ${accomodations}">
             <td th:text="${accomodation.latitude}">위도1</td>
             <td th:text="${accomodation.longitude}">경도1</td>
             <td th:text="${accomodation.price}">가격1</td>
             <td th:text="${accomodation.rating}">평점1</td>
             <td th:text="${accomodation.checkinDate}">체크인날짜1</td>
             <td th:text="${accomodation.checkoutDate}">체크아웃날짜1</td>
-        </tr>
-        <!-- Add more rows as needed -->
+          </tr>
+          <!-- Add more rows as needed -->
         </tbody>
-    </table>
-</div>
-</body>
+      </table>
+    </div>
+  </body>
 </html>
-
-
 
 <!--<!DOCTYPE html>-->
 <!--<html lang="en">-->

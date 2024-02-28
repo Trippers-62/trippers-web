@@ -1,97 +1,146 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trippers</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-<div class="container">
-
-    <div class="row justify-content-center">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/src/main/resources/static/css/trippers.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="index.html">
+              <img
+                src="/src/main/resources/static/img/logo-removeword.png"
+                alt="로고"
+                class="logo"
+              />
+              홈</a
+            >
+          </li>
+          <!-- index.html -->
+          <li><a href="search.html">일정 짜기</a></li>
+          <!-- search.html -->
+          <li><a href="search.html">추천 받기</a></li>
+          <!-- search.html -->
+          <li><a href="flight_calender.html">날짜별 최저가</a></li>
+          <!-- 출발 날짜별 항공권 가격 -->
+          <li><a href="exchange_rate.html">실시간 환율정보</a></li>
+          <!-- 환율변동 대시보드 -->
+        </ul>
+      </nav>
+    </header>
+    <div class="main_container">
+      <div class="row justify-content-center">
         <div class="col-md-6">
+          <div class="logo-container">
+            <img
+              src="/src/main/resources/static/img/logo-removebg.png"
+              alt="로고"
+            />
+          </div>
 
-            <h1 class="mt-5 mb-5">항공권 및 숙박 검색 서비스</h1>
-            <!-- 검색하기 버튼 -->
-            <button type="button" class="btn btn-primary btn-lg btn-block"
-                    onclick="location.href='search.html'"
-                    th:onclick="|location.href='@{/search}'|">검색하기</button>
-            <!-- 기타 컨텐츠 추가 가능 -->
+          <h1 class="mt-5 mb-5">일본 무작정 떠나기</h1>
+          <!-- 검색하기 버튼 -->
+          <button
+            type="button"
+            class="btn btn-primary btn-lg btn-block"
+            onclick="location.href='search.html'"
+            th:onclick="|location.href='@{/search}'|"
+          >
+            검색하기
+          </button>
+          <!-- 기타 컨텐츠 추가 가능 -->
+          <h1 class="mt-5 mb-5">일본 여행 계획 하기</h1>
+          <!-- 검색하기 버튼 -->
+          <button
+            type="button"
+            class="btn btn-primary btn-lg btn-block"
+            onclick="location.href='search.html'"
+            th:onclick="|location.href='@{/search}'|"
+          >
+            검색하기
+          </button>
         </div>
+      </div>
+
+      <!--    <form id="reservationForm" class="m-3" method="post">-->
+
+      <!--        <div class="form-group">-->
+      <!--            <label>여행 유형:</label><br>-->
+      <!--            <div class="form-check form-check-inline">-->
+      <!--                <input type="radio" id="roundTrip" name="tripType" value="roundTrip" class="form-check-input" checked>-->
+      <!--                <label for="roundTrip" class="form-check-label">왕복</label>-->
+      <!--            </div>-->
+      <!--            <div class="form-check form-check-inline">-->
+      <!--                <input type="radio" id="oneWay" name="tripType" value="oneWay" class="form-check-input">-->
+      <!--                <label for="oneWay" class="form-check-label">편도</label>-->
+      <!--            </div>-->
+      <!--        </div>-->
+      <!--        <div class="row">-->
+      <!--            <div class="col">-->
+      <!--                <div class="form-group">-->
+      <!--                    <label for="departureCountry">출발 나라:</label>-->
+      <!--                    <select id="departureCountry" class="form-control">-->
+      <!--                        <option value="korea">대한민국</option>-->
+      <!--                        <option value="japan">일본</option>-->
+      <!--                        &lt;!&ndash; Add more countries as needed &ndash;&gt;-->
+      <!--                    </select>-->
+      <!--                </div>-->
+      <!--            </div>-->
+      <!--            <div class="col">-->
+      <!--                <div class="form-group">-->
+      <!--                    <label for="departureCity">출발 도시:</label>-->
+      <!--                    <select id="departureCity" class="form-control">-->
+      <!--                        &lt;!&ndash; Options will be populated based on the selected country using JavaScript &ndash;&gt;-->
+      <!--                    </select>-->
+      <!--                </div>-->
+      <!--            </div>-->
+      <!--        </div>-->
+      <!--        <div class="row">-->
+      <!--            <div class="col">-->
+      <!--                <div class="form-group">-->
+      <!--                    <label for="arrivalCountry">도착 나라:</label>-->
+      <!--                    <select id="arrivalCountry" class="form-control">-->
+      <!--                        <option value="korea">대한민국</option>-->
+      <!--                        <option value="japan">일본</option>-->
+      <!--                        &lt;!&ndash; Add more countries as needed &ndash;&gt;-->
+      <!--                    </select>-->
+      <!--                </div>-->
+      <!--            </div>-->
+      <!--            <div class="col">-->
+      <!--                <div class="form-group">-->
+      <!--                    <label for="arrivalCity">도착 도시:</label>-->
+      <!--                    <select id="arrivalCity" class="form-control">-->
+      <!--                        &lt;!&ndash; Options will be populated based on the selected country using JavaScript &ndash;&gt;-->
+      <!--                    </select>-->
+      <!--                </div>-->
+      <!--            </div>-->
+      <!--        </div>-->
+
+      <!--        <div class="form-group">-->
+      <!--            <label for="departureDate">출발 날짜:</label>-->
+      <!--            <input type="date" id="departureDate" class="form-control">-->
+      <!--        </div>-->
+      <!--        <div class="form-group">-->
+      <!--            <label for="returnDate">도착 날짜:</label>-->
+      <!--            <input type="date" id="returnDate" class="form-control">-->
+      <!--        </div>-->
+      <!--        <div class="form-group">-->
+      <!--            <label for="budget">예산:</label>-->
+      <!--            <input type="number" id="budget" class="form-control">-->
+      <!--        </div>-->
+      <!--        <button type="submit" class="btn btn-primary">검색</button>-->
+      <!--    </form>-->
     </div>
-
-<!--    <form id="reservationForm" class="m-3" method="post">-->
-
-<!--        <div class="form-group">-->
-<!--            <label>여행 유형:</label><br>-->
-<!--            <div class="form-check form-check-inline">-->
-<!--                <input type="radio" id="roundTrip" name="tripType" value="roundTrip" class="form-check-input" checked>-->
-<!--                <label for="roundTrip" class="form-check-label">왕복</label>-->
-<!--            </div>-->
-<!--            <div class="form-check form-check-inline">-->
-<!--                <input type="radio" id="oneWay" name="tripType" value="oneWay" class="form-check-input">-->
-<!--                <label for="oneWay" class="form-check-label">편도</label>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="row">-->
-<!--            <div class="col">-->
-<!--                <div class="form-group">-->
-<!--                    <label for="departureCountry">출발 나라:</label>-->
-<!--                    <select id="departureCountry" class="form-control">-->
-<!--                        <option value="korea">대한민국</option>-->
-<!--                        <option value="japan">일본</option>-->
-<!--                        &lt;!&ndash; Add more countries as needed &ndash;&gt;-->
-<!--                    </select>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="col">-->
-<!--                <div class="form-group">-->
-<!--                    <label for="departureCity">출발 도시:</label>-->
-<!--                    <select id="departureCity" class="form-control">-->
-<!--                        &lt;!&ndash; Options will be populated based on the selected country using JavaScript &ndash;&gt;-->
-<!--                    </select>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="row">-->
-<!--            <div class="col">-->
-<!--                <div class="form-group">-->
-<!--                    <label for="arrivalCountry">도착 나라:</label>-->
-<!--                    <select id="arrivalCountry" class="form-control">-->
-<!--                        <option value="korea">대한민국</option>-->
-<!--                        <option value="japan">일본</option>-->
-<!--                        &lt;!&ndash; Add more countries as needed &ndash;&gt;-->
-<!--                    </select>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="col">-->
-<!--                <div class="form-group">-->
-<!--                    <label for="arrivalCity">도착 도시:</label>-->
-<!--                    <select id="arrivalCity" class="form-control">-->
-<!--                        &lt;!&ndash; Options will be populated based on the selected country using JavaScript &ndash;&gt;-->
-<!--                    </select>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--        <div class="form-group">-->
-<!--            <label for="departureDate">출발 날짜:</label>-->
-<!--            <input type="date" id="departureDate" class="form-control">-->
-<!--        </div>-->
-<!--        <div class="form-group">-->
-<!--            <label for="returnDate">도착 날짜:</label>-->
-<!--            <input type="date" id="returnDate" class="form-control">-->
-<!--        </div>-->
-<!--        <div class="form-group">-->
-<!--            <label for="budget">예산:</label>-->
-<!--            <input type="number" id="budget" class="form-control">-->
-<!--        </div>-->
-<!--        <button type="submit" class="btn btn-primary">검색</button>-->
-<!--    </form>-->
-</div>
-<script src="../static/js/script.js"></script>
-</body>
+    <script src="../static/js/script.js"></script>
+  </body>
 </html>
 
 <!--<!DOCTYPE html>-->
