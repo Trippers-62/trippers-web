@@ -1,17 +1,13 @@
 package com.web.trippers.controller;
-import com.web.trippers.model.entity.AccomodationEntity;
-import com.web.trippers.model.entity.CityEntity;
-import com.web.trippers.model.entity.OneWayFlightEntity;
-import com.web.trippers.repository.AccomodationEntityRepository;
-import com.web.trippers.repository.CityEntityRepository;
-import com.web.trippers.repository.OneWayFlightEntityRepository;
+import com.web.trippers.model.OneWayFlight;
+import com.web.trippers.model.RoundFlight;
+import com.web.trippers.service.FlightService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Slf4j
@@ -19,9 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SearchController {
 
-    private final CityEntityRepository cityEntityRepository;
-    private final OneWayFlightEntityRepository oneWayFlightEntityRepository;
-    private final AccomodationEntityRepository accomodationEntityRepository;
+    private final FlightService flightService;
 
     @GetMapping("/search")
     public String getSearchForm(){
@@ -29,25 +23,29 @@ public class SearchController {
     }
 
     @GetMapping("/search/result")
-    public String getSearchResult(@RequestParam("departureCity") String departureCity,
-                                  @RequestParam("arrivalCity") String arrivalCity,
-                                  @RequestParam("departureDate") LocalDate departureDate,
-                                  @RequestParam(value = "returnDate", required = false) LocalDate returnDate,
-                                  Model model){
+    public String getSearchResult(@ModelAttribute("flightSearch") FlightSearch flightSearch, Model model){
 
-        CityEntity departureCityEntity = cityEntityRepository.findByName(departureCity);
-        CityEntity arrivalCityEntity = cityEntityRepository.findByName(arrivalCity);
+        if (flightSearch.getTripType().equals("oneWay")){
+            List<OneWayFlight> flights = flightService.findOneWayFlights(flightSearch);
+            model.addAttribute("flights", flights);
 
-        List<OneWayFlightEntity> flights = oneWayFlightEntityRepository.findByDepartureCityAndArrivalCity(departureCityEntity, arrivalCityEntity);
-        List<AccomodationEntity> accomodations = accomodationEntityRepository.findByCity(arrivalCityEntity);
+        } else if(flightSearch.getTripType().equals("roundTrip")){
+            List<RoundFlight> flights = flightService.findRoundFlights(flightSearch);
+            model.addAttribute("flights", flights);
+        }
 
-        model.addAttribute("departureCity", departureCity);
-        model.addAttribute("arrivalCity", arrivalCity);
-        model.addAttribute("flights", flights);
-        model.addAttribute("accomodations", accomodations);
+//        model.addAttribute("departureCity", flightSearch.getDepartureCity());
+//        model.addAttribute("arrivalCity", flightSearch.getArrivalCity());
+//        model.addAttribute("tripType", flightSearch.getTripType());
 
         return "searchResult";
     }
+
+
+//    @GetMapping
+//    public Response<Page<PostResponse>> list(Pageable pageable, Authentication authentication) {
+//        return Response.success(postService.list(pageable).map(PostResponse::fromPost));
+//    }
 
 
 }

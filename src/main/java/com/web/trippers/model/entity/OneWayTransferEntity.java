@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
-@Setter
 @Table(name = "\"one_way_transfer\"")
 public class OneWayTransferEntity {
 

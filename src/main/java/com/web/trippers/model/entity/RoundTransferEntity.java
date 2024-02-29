@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
-@Setter
 @Table(name = "\"round_transfer\"")
 public class RoundTransferEntity {
 
