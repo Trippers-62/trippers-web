@@ -35,3 +35,10 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+/*
+'-plain.jar' 생성되지 않게
+ */
+jar {
+	enabled = false
+}
