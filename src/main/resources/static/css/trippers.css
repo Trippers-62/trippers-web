@@ -1,5 +1,5 @@
 /* 전체 페이지 스타일 */
-body {
+.main body {
   font-family: Arial, sans-serif;
   background-color: #f2f2f2;
   margin: 0;
@@ -7,7 +7,7 @@ body {
 }
 
 /* 네비게이션 바 스타일 */
-header {
+.main header {
   background-color: #003580;
   color: #fff;
   padding: 20px;
@@ -16,7 +16,7 @@ header {
   width: 1200px;
 }
 
-nav ul {
+.main nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -24,33 +24,33 @@ nav ul {
   justify-content: center;
 }
 
-nav li {
+.main nav li {
   margin: 0 10px;
 }
 
-nav a {
+.main nav a {
   color: #fff;
   text-decoration: none;
   font-size: 16px;
 }
 
-nav a:hover {
+.main nav a:hover {
   text-decoration: solid;
 }
 
 /* 로고 스타일 */
-.logo {
+.main .logo {
   max-width: 100px;
   max-height: 20px;
 }
 
-.logo-image {
+.main .logo-image {
   max-width: 100px;
   height: 60px;
 }
 
 /* 메인 컨텐츠 스타일 */
-.container {
+.main .main-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
@@ -60,7 +60,7 @@ nav a:hover {
 }
 
 /* 제목 스타일 */
-h1 {
+.main h1 {
   color: #333;
   font-size: 32px;
   margin-bottom: 20px;
@@ -68,19 +68,19 @@ h1 {
 }
 
 /* 폼 스타일 */
-form {
+.main form {
   margin-top: 30px;
 }
 
-label {
+.main label {
   font-weight: bold;
 }
 
-.form-group {
+.main .form-group {
   margin-bottom: 20px;
 }
 
-.form-control {
+.main .form-control {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -89,7 +89,7 @@ label {
 }
 
 /* 버튼 스타일 */
-.btn-primary {
+.main .btn-primary {
   display: block;
   width: 100%;
   padding: 10px;
@@ -100,16 +100,16 @@ label {
   cursor: pointer;
 }
 
-.btn-primary:hover {
+.main .btn-primary:hover {
   background-color: #002b5a;
 }
 
-.main_container {
+.main .main_container {
   margin: 10px;
   border: lime;
 }
 
-.logo-container {
+.main .logo-container {
   text-align: center;
   padding: auto;
   margin: auto;

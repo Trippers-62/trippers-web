@@ -17,11 +17,13 @@ public class SearchController {
 
     private final FlightService flightService;
 
+    //검색 폼
     @GetMapping("/search")
     public String getSearchForm(){
         return "search";
     }
 
+    //검색 결과
     @GetMapping("/search/result")
     public String getSearchResult(@ModelAttribute("flightSearch") FlightSearch flightSearch, Model model){
 
@@ -33,10 +35,6 @@ public class SearchController {
             List<RoundFlight> flights = flightService.findRoundFlights(flightSearch);
             model.addAttribute("flights", flights);
         }
-
-//        model.addAttribute("departureCity", flightSearch.getDepartureCity());
-//        model.addAttribute("arrivalCity", flightSearch.getArrivalCity());
-//        model.addAttribute("tripType", flightSearch.getTripType());
 
         return "searchResult";
     }

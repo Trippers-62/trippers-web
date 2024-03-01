@@ -8,46 +8,29 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
-    <link
-      rel="icon"
-      href="/src/main/resources/static/img/logo-removeword.png"
-    />
-    <link rel="stylesheet" href="/src/main/resources/static/css/trippers.css" />
+    <link th:href="@{/css/trippers.css}" rel="stylesheet" href="/css/trippers.css" />
+<!--    <link-->
+<!--      rel="icon"-->
+<!--      href="/src/main/resources/static/img/logo-removeword.png"-->
+<!--    />-->
   </head>
-  <body class="mb-5">
+  <body class="main mb-5">
     <header>
-      <nav>
-        <ul>
-          <li>
-            <a href="index.html">
-              <img
-                src="/src/main/resources/static/img/logo-removeword.png"
-                alt="로고"
-                class="logo"
-              />
-              홈</a
-            >
-          </li>
-          <!-- index.html -->
-          <li><a href="search.html">일정 짜기</a></li>
-          <!-- search.html -->
-          <li><a href="search.html">추천 받기</a></li>
-          <!-- search.html -->
-          <li><a href="flight_calender.html">날짜별 최저가</a></li>
-          <!-- 출발 날짜별 항공권 가격 -->
-          <li><a href="exchange_rate.html">실시간 환율정보</a></li>
-          <!-- 환율변동 대시보드 -->
-        </ul>
-      </nav>
+      <nav th:replace="~{navbar :: header}"></nav>
     </header>
-
     <div class="container">
+      <div class="main">
+
+      </div>
       <h1 class="mt-5 m-3">
         <img
-          src="/src/main/resources/static/img/logo-removebg.png"
-          alt="로고"
-          class="logo-image"
-        />일본 여행
+                src="/img/logo-removebg.png"
+                th:src="@{/img/logo-removebg.png}"
+                th:alt="로고"
+                alt="로고"
+                class="logo"
+        />
+        일본 여행
       </h1>
       <form
         id="reservationForm"
