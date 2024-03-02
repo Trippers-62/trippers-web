@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flight and Accommodation Results</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <h1 class="mt-5 m-3">항공권 및 숙박 검색 결과</h1>
+
+  <!-- Recommendations -->
+  <div class="row">
+    <!-- Display recommendation cards -->
+    <div class="col-md-6 mb-4" th:each="recommendation : ${recommendations}">
+      <div class="card">
+        <div class="card-body">
+          <!-- Flight details -->
+          <h5 class="card-title">항공권 정보</h5>
+          <p class="card-text" th:text="${recommendation.flight.departureCity.name + ' - ' + recommendation.flight.arrivalCity.name}"></p>
+          <p class="card-text" th:text="${'Departure: ' + recommendation.flight.departureDatetime}"></p>
+          <p class="card-text" th:text="${'Price: ' + recommendation.flight.price}"></p>
+          <p class="card-text" th:text="${'Airline: ' + recommendation.flight.airline}"></p>
+          <p class="card-text" th:text="${'Transfer count: ' + recommendation.flight.transferCount}"></p>
+          <!-- Accommodation details -->
+          <h5 class="card-title mt-4">숙소 정보</h5>
+          <p class="card-text" th:text="${recommendation.accomodation.city.name}"></p>
+          <p class="card-text" th:text="${'Latitude: ' + recommendation.accomodation.latitude}"></p>
+          <p class="card-text" th:text="${'Longitude: ' + recommendation.accomodation.longitude}"></p>
+          <p class="card-text" th:text="${'Price: ' + recommendation.accomodation.price}"></p>
+          <p class="card-text" th:text="${'Rating: ' + recommendation.accomodation.rating}"></p>
+          <p class="card-text" th:text="${'Check-in date: ' + recommendation.accomodation.checkinDate}"></p>
+          <p class="card-text" th:text="${'Check-out date: ' + recommendation.accomodation.checkoutDate}"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Add more recommendation cards as needed -->
+</div>
+</body>
+</html>

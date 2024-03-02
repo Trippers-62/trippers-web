@@ -21,9 +21,17 @@ public class AccomodationEntity {
     @JoinColumn(name="city_id")
     private CityEntity city;
 
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "link")
+    private String link;
+
+    //TODO: 삭제여부 확인
     @Column(name = "latitude")
     private Float latitude;
 
+    //TODO: 삭제여부 확인
     @Column(name = "longitude")
     private Float longitude;
 
@@ -38,6 +46,12 @@ public class AccomodationEntity {
 
     @Column(name = "checkout_date")
     private LocalDate checkoutDate;
+
+    @Column(name = "review_count")
+    private Integer reviewCount;
+
+    @Column(name = "thumbnail")
+    private String thumbnail;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

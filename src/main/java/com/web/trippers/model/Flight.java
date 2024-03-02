@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @AllArgsConstructor
-public abstract class Flight {
+public class Flight {
     private Integer id;
     private City departureCity;
     private City arrivalCity;

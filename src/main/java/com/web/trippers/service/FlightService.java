@@ -12,8 +12,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 @RequiredArgsConstructor
 public class FlightService {
@@ -23,7 +21,7 @@ public class FlightService {
     private final CityEntityRepository cityEntityRepository;
 
     //검색 조건에 맞는 편도 항공권 찾기
-    public Page<OneWayFlight> findOneWayFlights(SearchForm searchForm, Pageable pageable) {
+    public Page<OneWayFlight> getOneWayFlights(SearchForm searchForm, Pageable pageable) {
 
         CityEntity departureCityEntity = cityEntityRepository.findByName(searchForm.getDepartureCity());
         CityEntity arrivalCityEntity = cityEntityRepository.findByName(searchForm.getArrivalCity());
@@ -35,7 +33,7 @@ public class FlightService {
     }
 
     //검색 조건에 맞는 왕복 항공권 찾기
-    public Page<RoundFlight> findRoundFlights(SearchForm searchForm, Pageable pageable) {
+    public Page<RoundFlight> getRoundFlights(SearchForm searchForm, Pageable pageable) {
 
         CityEntity departureCityEntity = cityEntityRepository.findByName(searchForm.getDepartureCity());
         CityEntity arrivalCityEntity = cityEntityRepository.findByName(searchForm.getArrivalCity());

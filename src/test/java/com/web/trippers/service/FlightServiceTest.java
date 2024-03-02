@@ -13,14 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -90,7 +87,7 @@ public class FlightServiceTest {
 
         //then
 //        assertEquals(2, flights.size());
-        Assertions.assertDoesNotThrow(() -> flightService.findOneWayFlights(searchForm, pageable));
+        Assertions.assertDoesNotThrow(() -> flightService.getOneWayFlights(searchForm, pageable));
     }
 
     @Test
@@ -147,11 +144,11 @@ public class FlightServiceTest {
                 departureCityEntity, arrivalCityEntity, LocalDate.parse("2024-02-25"), LocalDate.parse("2024-02-29"), pageable
         )).thenReturn(Page.empty());
 
-//        List<RoundFlight> flights = flightService.findRoundFlights(searchForm);
+//        List<RoundFlight> flights = flightService.getRoundFlights(searchForm);
 
         //then
 //        assertEquals(2, flights.size());
-        Assertions.assertDoesNotThrow(() -> flightService.findRoundFlights(searchForm, pageable));
+        Assertions.assertDoesNotThrow(() -> flightService.getRoundFlights(searchForm, pageable));
 
     }
 

@@ -15,8 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Slf4j
 @Controller
 @RequiredArgsConstructor
@@ -35,12 +33,15 @@ public class SearchController {
     @GetMapping("/search/result")
     public String getSearchResult(@ModelAttribute("searchForm") SearchForm searchForm, Model model, Pageable pageable){
 
+        Pageable pageableWithFiveElementsSortByPrice = PageRequest.of(pageable.getPageNumber(), 10, Sort.by("price").ascending());
+
+        //항공권 가져오기
         if (searchForm.getTripType().equals("oneWay")){
-            Page<OneWayFlight> flights = flightService.findOneWayFlights(searchForm, pageable);
+            Page<OneWayFlight> flights = flightService.getOneWayFlights(searchForm, pageableWithFiveElementsSortByPrice);
             model.addAttribute("flights", flights);
 
         } else if(searchForm.getTripType().equals("roundTrip")){
-            Page<RoundFlight> flights = flightService.findRoundFlights(searchForm, pageable);
+            Page<RoundFlight> flights = flightService.getRoundFlights(searchForm, pageableWithFiveElementsSortByPrice);
             model.addAttribute("flights", flights);
         }
 
