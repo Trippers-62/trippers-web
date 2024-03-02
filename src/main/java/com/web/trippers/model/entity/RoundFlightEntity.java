@@ -17,22 +17,22 @@ public class RoundFlightEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="departure_city_id")
     private CityEntity departureCity;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="arrival_city_id")
     private CityEntity arrivalCity;
 
     @Column(name = "departure_datetime")
     private LocalDateTime departureDatetime;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="return_departure_city_id")
     private CityEntity returnDepartureCity;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="return_arrival_city_id")
     private CityEntity returnArrivalCity;
 

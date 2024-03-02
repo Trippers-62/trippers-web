@@ -21,17 +21,42 @@
       <!-- Flight Results -->
       <h2 class="mt-5 m-3">항공권 결과</h2>
       <h5 class="mt-1 m-3">
-        출발 도시 : <span id="departureCity" th:text="${flightSearch.departureCity}"></span>
+        출발 도시 : <span id="departureCity" th:text="${searchForm.departureCity}"></span>
       </h5>
       <h5 class="mt-1 m-3">
-        도착 도시 : <span id="arrivalCity" th:text="${flightSearch.arrivalCity}"></span>
+        도착 도시 : <span id="arrivalCity" th:text="${searchForm.arrivalCity}"></span>
       </h5>
 
       <h5 class="mt-1 m-3">
-        여행 유형:  <span id="tripType" th:text="${flightSearch.tripType}"></span>
+        여행 유형:  <span id="tripType" th:text="${searchForm.tripType}"></span>
       </h5>
 
-      <table th:if="${flightSearch.tripType == 'oneWay'}" class="table m-3">
+      <!-- Pagination -->
+<!--      <div th:if="${flights.totalPages > 1}">-->
+<!--        <ul class="pagination">-->
+<!--          <li class="page-item" th:class="${flights.first} ? 'disabled' : ''">-->
+<!--            <a class="page-link" th:href="@{/search/result(page=0)}">&lt;&lt;</a>-->
+<!--          </li>-->
+<!--          <li class="page-item" th:class="${flights.first} ? 'disabled' : ''">-->
+<!--            <a class="page-link" th:href="@{/search/result(page=${flights.number - 1},-->
+<!--                     ${#request.params}, ${#request.queryString})}">&lt;</a>-->
+<!--          </li>-->
+<!--&lt;!&ndash;          <li class="page-item" th:class="${flights.first} ? 'disabled' : ''">&ndash;&gt;-->
+<!--&lt;!&ndash;            <a class="page-link" th:href="@{/search/result(page=${flights.number - 1})}">&lt;</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          </li>&ndash;&gt;-->
+<!--          <li class="page-item" th:each="i : ${#numbers.sequence(0, flights.totalPages - 1)}" th:class="${flights.number == i} ? 'active' : ''">-->
+<!--            <a class="page-link" th:href="@{/search/result(page=${i})}" th:text="${i + 1}"></a>-->
+<!--          </li>-->
+<!--          <li class="page-item" th:class="${flights.last} ? 'disabled' : ''">-->
+<!--            <a class="page-link" th:href="@{/search/result(page=${flights.number + 1})}">&gt;</a>-->
+<!--          </li>-->
+<!--          <li class="page-item" th:class="${flights.last} ? 'disabled' : ''">-->
+<!--            <a class="page-link" th:href="@{/search/result(page=${flights.totalPages - 1})}">&gt;&gt;</a>-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--      </div>-->
+
+      <table th:if="${searchForm.tripType == 'oneWay'}" class="table m-3">
         <thead>
         <tr>
           <th scope="col">출발 날짜/시간</th>
@@ -52,8 +77,7 @@
         </tbody>
       </table>
 
-
-      <table th:if="${flightSearch.tripType == 'roundTrip'}" class="table m-3">
+      <table th:if="${searchForm.tripType == 'roundTrip'}" class="table m-3">
         <thead>
         <tr>
           <th scope="col">출발 날짜/시간</th>
@@ -79,7 +103,7 @@
       <!-- Accommodation Results -->
       <h2 class="mt-5 m-3">숙박 결과</h2>
       <h5 class="mt-1 m-3">
-        도착 도시 : <span th:text="${arrivalCity}"></span>
+        도착 도시 : <span th:text="${searchForm.arrivalCity}"></span>
       </h5>
 
       <table class="table m-3">

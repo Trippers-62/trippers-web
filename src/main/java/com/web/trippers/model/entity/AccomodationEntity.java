@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -33,10 +34,10 @@ public class AccomodationEntity {
     private BigDecimal rating;
 
     @Column(name = "checkin_date")
-    private LocalDateTime checkinDate;
+    private LocalDate checkinDate;
 
     @Column(name = "checkout_date")
-    private LocalDateTime checkoutDate;
+    private LocalDate checkoutDate;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
