@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -18,9 +19,19 @@ public interface AccomodationEntityRepository extends JpaRepository<Accomodation
 
     Page<AccomodationEntity> findAll(Pageable pageable);
 
-    //도착한 나라와 출발 시간으로 숙소 찾
-    @Query("SELECT a FROM AccomodationEntity a WHERE a.city = :arrivalCity AND a.checkinDate = :departureDate")
-    Page<AccomodationEntity> findByArrivalCityAndCheckinDate(@Param("arrivalCity") CityEntity arrivalCity,
-                                                              @Param("departureDate") LocalDate departureDate,
+    //도착한 나라와 출발 시간으로 숙소 찾기
+    @Query("SELECT a FROM AccomodationEntity a WHERE a.city = :city AND a.checkinDate = :date")
+    Page<AccomodationEntity> findByArrivalCityAndCheckinDate(@Param("city") CityEntity city,
+                                                              @Param("date") LocalDate date,
                                                               Pageable pageable);
+
+    //나라, 시간, 평점 기준으로 숙소 찾기
+    @Query("SELECT a FROM AccomodationEntity a WHERE a.city = :city AND a.checkinDate = :date AND a.rating >= :minRating")
+    Page<AccomodationEntity> findByArrivalCityAndCheckinDateWithMinRating(
+            @Param("city") CityEntity city,
+            @Param("date") LocalDate date,
+            @Param("minRating") BigDecimal minRating,
+            Pageable pageable
+    );
+
 }
