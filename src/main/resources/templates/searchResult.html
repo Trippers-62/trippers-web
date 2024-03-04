@@ -109,8 +109,6 @@
       <table class="table m-3">
         <thead>
           <tr>
-            <th scope="col">위도</th>
-            <th scope="col">경도</th>
             <th scope="col">가격</th>
             <th scope="col">평점</th>
             <th scope="col">체크인 날짜/시간</th>
@@ -120,8 +118,6 @@
         <tbody>
           <!-- Accommodation results rows will be dynamically populated here -->
           <tr th:each="accomodation : ${accomodations}">
-            <td th:text="${accomodation.latitude}">위도1</td>
-            <td th:text="${accomodation.longitude}">경도1</td>
             <td th:text="${accomodation.price}">가격1</td>
             <td th:text="${accomodation.rating}">평점1</td>
             <td th:text="${accomodation.checkinDate}">체크인날짜1</td>
@@ -133,6 +129,7 @@
     </div>
   </body>
 </html>
+
 
 <!--<!DOCTYPE html>-->
 <!--<html lang="en">-->
@@ -150,14 +147,14 @@
 <!--    <h2 class="mt-5 m-3">항공권 티켓</h2>-->
 <!--    <div class="row">-->
 <!--        &lt;!&ndash; Flight ticket cards will be dynamically populated here &ndash;&gt;-->
-<!--        <div class="col-md-4 mb-4">-->
-<!--            <div class="card">-->
+<!--        <div th:if="${searchForm.tripType == 'oneWay'}" class="col-12 mb-4">-->
+<!--            <div th:each="flight : ${flights}" class="card">-->
 <!--                <div class="card-body">-->
 <!--                    <h5 class="card-title">출발 도시 - 도착 도시</h5>-->
-<!--                    <p class="card-text">출발 날짜/시간</p>-->
-<!--                    <p class="card-text">가격</p>-->
-<!--                    <p class="card-text">항공사</p>-->
-<!--                    <p class="card-text">환승 횟수</p>-->
+<!--                    <p th:text="${flight.departureDatetime}" class="card-text">출발 날짜/시간</p>-->
+<!--                    <p th:text="${flight.price}" class="card-text">가격</p>-->
+<!--                    <p th:text="${flight.airline}" class="card-text">항공사</p>-->
+<!--                    <p th:text="${flight.transferCount}" class="card-text">환승 횟수</p>-->
 <!--                </div>-->
 <!--            </div>-->
 <!--        </div>-->
@@ -168,7 +165,7 @@
 <!--    <h2 class="mt-5 m-3">숙박 정보</h2>-->
 <!--    <div class="row">-->
 <!--        &lt;!&ndash; Accommodation cards will be dynamically populated here &ndash;&gt;-->
-<!--        <div class="col-md-4 mb-4">-->
+<!--        <div class="col-12 mb-4">-->
 <!--            <div class="card">-->
 <!--                <div class="card-body">-->
 <!--                    <h5 class="card-title">도시</h5>-->
