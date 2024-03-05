@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Drivin - Driving School Website Template</title>
@@ -33,7 +33,7 @@
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../../../../../../Downloads/Trippers-1.0.0/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
@@ -48,49 +48,6 @@
       <div class="spinner-grow text-primary" role="status"></div>
     </div>
     <!-- Spinner End -->
-
-    <!-- Topbar Start -->
-    <div class="container-fluid bg-dark text-light p-0">
-      <div class="row gx-0 d-none d-lg-flex">
-        <div class="col-lg-7 px-5 text-start">
-          <div class="h-100 d-inline-flex align-items-center me-4">
-            <small class="fa fa-map-marker-alt text-primary me-2"></small>
-            <small>역삼동, 서울, 대한민국</small>
-          </div>
-          <div class="h-100 d-inline-flex align-items-center">
-            <small class="far fa-clock text-primary me-2"></small>
-            <small>Mon - Fri : 09.00 AM - 06.00 PM</small>
-          </div>
-        </div>
-        <div class="col-lg-5 px-5 text-end">
-          <div class="h-100 d-inline-flex align-items-center me-4">
-            <small class="fa fa-phone-alt text-primary me-2"></small>
-            <small>+012 345 6789</small>
-          </div>
-          <div class="h-100 d-inline-flex align-items-center mx-n2">
-            <a
-              class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary"
-              href=""
-              ><i class="fab fa-facebook-f"></i
-            ></a>
-            <a
-              class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary"
-              href=""
-              ><i class="fab fa-twitter"></i
-            ></a>
-            <a
-              class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary"
-              href=""
-              ><i class="fab fa-linkedin-in"></i
-            ></a>
-            <a class="btn btn-square btn-link rounded-0" href=""
-              ><i class="fab fa-instagram"></i
-            ></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Topbar End -->
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
@@ -151,7 +108,7 @@
     >
       <div class="container text-center">
         <h1 class="display-4 text-white animated slideInDown mb-4">
-          계획 하기
+          팀원 소개
         </h1>
         <nav aria-label="breadcrumb animated slideInDown">
           <ol class="breadcrumb justify-content-center mb-0">
@@ -162,7 +119,7 @@
               <a class="text-white" href="#">Pages</a>
             </li>
             <li class="breadcrumb-item text-primary active" aria-current="page">
-              계획 하기
+              팀원 소개
             </li>
           </ol>
         </nav>
@@ -170,152 +127,136 @@
     </div>
     <!-- Page Header End -->
 
-    <!-- About Start -->
+    <!-- Team Start -->
     <div class="container-xxl py-6">
       <div class="container">
-        <div class="row g-5">
-          <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-            <div
-              class="position-relative overflow-hidden ps-5 pt-5 h-100"
-              style="min-height: 400px"
-            >
-              <img
-                class="position-absolute w-100 h-100"
-                src="img/travel-plan.png"
-                alt=""
-                style="object-fit: cover"
-              />
-              <img
-                class="position-absolute top-0 start-0 bg-white pe-3 pb-3"
-                src="img/about-small.jpg"
-                alt=""
-                style="width: 200px; height: 200px"
-              />
+        <div
+          class="text-center mx-auto mb-5 wow fadeInUp"
+          data-wow-delay="0.1s"
+          style="max-width: 500px"
+        >
+          <h6 class="text-primary text-uppercase mb-2">Meet The Team</h6>
+          <h1 class="display-6 mb-4">
+            We Have Great Experience Of Data Engineering
+          </h1>
+        </div>
+        <div class="row g-0 team-items">
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="team-item position-relative">
+              <div class="position-relative">
+                <img class="img-fluid" src="img/team-1.jpg" alt="" />
+                <div class="team-social text-center">
+                  <a
+                    class="btn btn-square btn-outline-primary border-2 m-1"
+                    href=""
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                  <a
+                    class="btn btn-square btn-outline-primary border-2 m-1"
+                    href=""
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                  <a
+                    class="btn btn-square btn-outline-primary border-2 m-1"
+                    href=""
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                </div>
+              </div>
+              <div class="bg-light text-center p-4">
+                <h5 class="mt-2">Full Name</h5>
+                <span>Trainer</span>
+              </div>
             </div>
           </div>
-          <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-            <div class="h-100">
-              <h6 class="text-primary text-uppercase mb-2">계획 하기</h6>
-              <!-- 여기 밑에서 부터 search form -->
-              <form
-                id="searchForm"
-                class="m-3"
-                action="/search/result"
-                th:method="get"
-              >
-                <div class="form-group">
-                  <label>여행 유형:</label><br />
-                  <div class="form-check form-check-inline">
-                    <input
-                      type="radio"
-                      id="roundTrip"
-                      name="tripType"
-                      value="roundTrip"
-                      class="form-check-input"
-                      checked
-                    />
-                    <label for="roundTrip" class="form-check-label">왕복</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input
-                      type="radio"
-                      id="oneWay"
-                      name="tripType"
-                      value="oneWay"
-                      class="form-check-input"
-                    />
-                    <label for="oneWay" class="form-check-label">편도</label>
-                  </div>
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+            <div class="team-item position-relative">
+              <div class="position-relative">
+                <img class="img-fluid" src="img/team-2.jpg" alt="" />
+                <div class="team-social text-center">
+                  <a
+                    class="btn btn-square btn-outline-primary border-2 m-1"
+                    href=""
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                  <a
+                    class="btn btn-square btn-outline-primary border-2 m-1"
+                    href=""
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                  <a
+                    class="btn btn-square btn-outline-primary border-2 m-1"
+                    href=""
+                    ><i class="fab fa-instagram"></i
+                  ></a>
                 </div>
-                <div class="row">
-                  <div class="col">
-                    <div class="form-group">
-                      <label for="departureCountry">출발 나라:</label>
-                      <select
-                        name="departureCountry"
-                        id="departureCountry"
-                        class="form-control"
-                      >
-                        <option value="korea">대한민국</option>
-                        <option value="japan">일본</option>
-                        <!-- 필요한 경우 추가 국가를 추가하세요 -->
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="form-group">
-                      <label for="departureCity">출발 도시:</label>
-                      <select
-                        name="departureCity"
-                        id="departureCity"
-                        class="form-control"
-                      >
-                        <!-- JavaScript를 사용하여 선택된 국가에 따라 옵션을 동적으로 추가합니다 -->
-                      </select>
-                    </div>
-                  </div>
+              </div>
+              <div class="bg-light text-center p-4">
+                <h5 class="mt-2">Full Name</h5>
+                <span>Trainer</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+            <div class="team-item position-relative">
+              <div class="position-relative">
+                <img class="img-fluid" src="img/team-3.jpg" alt="" />
+                <div class="team-social text-center">
+                  <a
+                    class="btn btn-square btn-outline-primary border-2 m-1"
+                    href=""
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                  <a
+                    class="btn btn-square btn-outline-primary border-2 m-1"
+                    href=""
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                  <a
+                    class="btn btn-square btn-outline-primary border-2 m-1"
+                    href=""
+                    ><i class="fab fa-instagram"></i
+                  ></a>
                 </div>
-                <div class="row">
-                  <div class="col">
-                    <div class="form-group">
-                      <label for="arrivalCountry">도착 나라:</label>
-                      <select
-                        name="arrivalCountry"
-                        id="arrivalCountry"
-                        class="form-control"
-                      >
-                        <option value="korea">대한민국</option>
-                        <option value="japan">일본</option>
-                        <!-- 필요한 경우 추가 국가를 추가하세요 -->
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col">
-                    <div class="form-group">
-                      <label for="arrivalCity">도착 도시:</label>
-                      <select
-                        name="arrivalCity"
-                        id="arrivalCity"
-                        class="form-control"
-                      >
-                        <!-- JavaScript를 사용하여 선택된 국가에 따라 옵션을 동적으로 추가합니다 -->
-                      </select>
-                    </div>
-                  </div>
+              </div>
+              <div class="bg-light text-center p-4">
+                <h5 class="mt-2">Full Name</h5>
+                <span>Trainer</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+            <div class="team-item position-relative">
+              <div class="position-relative">
+                <img class="img-fluid" src="img/team-4.jpg" alt="" />
+                <div class="team-social text-center">
+                  <a
+                    class="btn btn-square btn-outline-primary border-2 m-1"
+                    href=""
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                  <a
+                    class="btn btn-square btn-outline-primary border-2 m-1"
+                    href=""
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                  <a
+                    class="btn btn-square btn-outline-primary border-2 m-1"
+                    href=""
+                    ><i class="fab fa-instagram"></i
+                  ></a>
                 </div>
-
-                <div class="form-group">
-                  <label for="departureDate">출발 날짜:</label>
-                  <input
-                    type="date"
-                    name="departureDate"
-                    id="departureDate"
-                    class="form-control"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="returnDate">도착 날짜:</label>
-                  <input
-                    type="date"
-                    name="returnDate"
-                    id="returnDate"
-                    class="form-control"
-                  />
-                </div>
-                <button type="submit" class="btn btn-primary">검색</button>
-              </form>
-
-              <div class="row g-4">
-                <div class="col-sm-6">
-                  <a class="btn btn-primary py-3 px-5" href="">Read More</a>
-                </div>
+              </div>
+              <div class="bg-light text-center p-4">
+                <h5 class="mt-2">Full Name</h5>
+                <span>Trainer</span>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- About End -->
+    <!-- Team End -->
 
     <!-- Footer Start -->
     <div

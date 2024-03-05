@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Flight List</title>
+    <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+</head>
+<body>
+<h1>Flight List</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Origin</th>
+        <th>Destination</th>
+        <th>Departure Time</th>
+        <th>Price</th>
+    </tr>
+    <tr th:each="flight : ${flights.content}">
+        <td th:text="${flight.id}"></td>
+        <td th:text="${flight.departureCity.name}"></td>
+        <td th:text="${flight.arrivalCity.name}"></td>
+        <td th:text="${departureDatetime}"></td>
+        <td th:text="${flight.price}"></td>
+    </tr>
+</table>
+
+
+<!--<nav style="text-align: center;">-->
+<!--    <ul class="pagination"-->
+<!--        th:with="start=${T(Math).floor(boardList.number/10)*10 + 1},-->
+<!--                    last=(${start + 9 < boardList.totalPages ? start + 9 : boardList.totalPages})">-->
+<!--        <li>-->
+<!--            <a th:href="@{/boards(page=1)}" aria-label="First">-->
+<!--                <span aria-hidden="true">First</span>-->
+<!--            </a>-->
+<!--        </li>-->
+
+<!--        <li th:class="${boardList.first} ? 'disabled'">-->
+<!--            <a th:href="${boardList.first} ? '#' :@{/boards(page=${boardList.number})}" aria-label="Previous">-->
+<!--                <span aria-hidden="true">&lt;</span>-->
+<!--            </a>-->
+<!--        </li>-->
+
+<!--        <li th:each="page: ${#numbers.sequence(start, last)}" th:class="${page == boardList.number + 1} ? 'active'">-->
+<!--            <a th:text="${page}" th:href="@{/boards(page=${page})}"></a>-->
+<!--        </li>-->
+
+<!--        <li th:class="${boardList.last} ? 'disabled'">-->
+<!--            <a th:href="${boardList.last} ? '#' : @{/boards(page=${boardList.number + 2})}" aria-label="Next">-->
+<!--                <span aria-hidden="true">&gt;</span>-->
+<!--            </a>-->
+<!--        </li>-->
+
+<!--        <li>-->
+<!--            <a th:href="@{/boards(page=${boardList.totalPages})}" aria-label="Last">-->
+<!--                <span aria-hidden="true">Last</span>-->
+<!--            </a>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--</nav>-->
+
+
+<div th:if="${flights.totalPages > 1}">
+    <ul class="pagination">
+        <li class="page-item" th:class="${flights.first} ? 'disabled' : ''">
+            <a class="page-link" th:href="@{/flights(page=0)}">&lt;&lt;</a>
+        </li>
+        <li class="page-item" th:class="${flights.first} ? 'disabled' : ''">
+            <a class="page-link" th:href="@{/flights(page=${flights.number - 1})}">&lt;</a>
+        </li>
+        <li class="page-item" th:each="i : ${#numbers.sequence(0, flights.totalPages - 1)}" th:class="${flights.number == i} ? 'active' : ''">
+            <a class="page-link" th:href="@{/flights(page=${i})}" th:text="${i + 1}"></a>
+        </li>
+        <li class="page-item" th:class="${flights.last} ? 'disabled' : ''">
+            <a class="page-link" th:href="@{/flights(page=${flights.number + 1})}">&gt;</a>
+        </li>
+        <li class="page-item" th:class="${flights.last} ? 'disabled' : ''">
+            <a class="page-link" th:href="@{/flights(page=${flights.totalPages - 1})}">&gt;&gt;</a>
+        </li>
+    </ul>
+</div>
+
+
+<!--<div th:if="${flights.totalPages > 1}">-->
+<!--    <ul class="pagination">-->
+<!--        <li class="page-item">-->
+<!--            <a class="page-link" href="#" aria-label="Previous">-->
+<!--                <span aria-hidden="true">&laquo;</span>-->
+<!--                <span class="sr-only">Previous</span>-->
+<!--            </a>-->
+<!--        </li>-->
+<!--        <li class="page-item"><a class="page-link" href="#">1</a></li>-->
+<!--        <li class="page-item"><a class="page-link" href="#">2</a></li>-->
+<!--        <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+<!--        <li class="page-item">-->
+<!--            <a class="page-link" href="#" aria-label="Next">-->
+<!--                <span aria-hidden="true">&raquo;</span>-->
+<!--                <span class="sr-only">Next</span>-->
+<!--            </a>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--</div>-->
+
+</body>
+</html>
+

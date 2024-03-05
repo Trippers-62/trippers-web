@@ -31,6 +31,11 @@ public class SearchController {
         return "search";
     }
 
+    @GetMapping("/index1")
+    public String home(){
+        return "index1";
+    }
+
     //검색 결과
     @GetMapping("/search/result")
     public String getSearchResult(@ModelAttribute("searchForm") SearchForm searchForm, Model model, Pageable pageable){
