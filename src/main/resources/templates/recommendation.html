@@ -1,149 +1,310 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trippers</title>
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
-    <link
-      th:href="@{/css/trippers.css}"
-      rel="stylesheet"
-      href="/css/trippers.css"
-    />
-  </head>
-  <body class="main mb-5">
-    <header>
-      <nav th:replace="~{navbar :: header}"></nav>
-    </header>
-    <div class="container">
-      <div class="main"></div>
-      <h1 class="mt-5 m-3">
-        <img
-          src="/img/logo-removebg.png"
-          th:src="@{/img/logo-removebg.png}"
-          th:alt="로고"
-          alt="로고"
-          class="logo"
-        />
-        일본 여행
-      </h1>
-      <form
-        id="searchForm"
-        class="m-3"
-        action="/recommendation/result"
-        th:method="get"
-      >
-        <div class="form-group">
-          <label>여행 유형:</label><br />
-          <div class="form-check form-check-inline">
-            <input
-              type="radio"
-              id="roundTrip"
-              name="tripType"
-              value="roundTrip"
-              class="form-check-input"
-              checked
-            />
-            <label for="roundTrip" class="form-check-label">왕복</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input
-              type="radio"
-              id="oneWay"
-              name="tripType"
-              value="oneWay"
-              class="form-check-input"
-            />
-            <label for="oneWay" class="form-check-label">편도</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <label for="departureCountry">출발 나라:</label>
-              <select
-                name="departureCountry"
-                id="departureCountry"
-                class="form-control"
-              >
-                <option value="korea">대한민국</option>
-                <option value="japan">일본</option>
-                <!-- Add more countries as needed -->
-              </select>
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group">
-              <label for="departureCity">출발 도시:</label>
-              <select
-                name="departureCity"
-                id="departureCity"
-                class="form-control"
-              >
-                <!-- Options will be populated based on the selected country using JavaScript -->
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <label for="arrivalCountry">도착 나라:</label>
-              <select
-                name="arrivalCountry"
-                id="arrivalCountry"
-                class="form-control"
-              >
-                <option value="korea">대한민국</option>
-                <option value="japan">일본</option>
-                <!-- Add more countries as needed -->
-              </select>
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group">
-              <label for="arrivalCity">도착 도시:</label>
-              <select name="arrivalCity" id="arrivalCity" class="form-control">
-                <!-- Options will be populated based on the selected country using JavaScript -->
-              </select>
-            </div>
-          </div>
-        </div>
+    <meta charset="utf-8" />
+    <title>Trippers-recommendation</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
 
-        <div class="form-group">
-          <label for="departureDate">출발 날짜:</label>
-          <input
-            type="date"
-            name="departureDate"
-            id="departureDate"
-            class="form-control"
-          />
-        </div>
-        <div class="form-group">
-          <label for="returnDate">도착 날짜:</label>
-          <input
-            type="date"
-            name="returnDate"
-            id="returnDate"
-            class="form-control"
-          />
-        </div>
-        <div class="form-group">
-          <label for="budget">예산:</label>
-          <input
-            type="number"
-            name="budget"
-            id="budget"
-            class="form-control"
-            placeholder="※숫자만 입력해주세요! 예시: 500000"
-          />
-        </div>
-        <button type="submit" class="btn btn-primary">검색</button>
-      </form>
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon" />
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icon Font Stylesheet -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- Spinner Start -->
+    <div
+      id="spinner"
+      class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
+    >
+      <div class="spinner-grow text-primary" role="status"></div>
     </div>
+    <!-- Spinner End -->
+
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-dark text-light p-0">
+      <div class="row gx-0 d-none d-lg-flex">
+        <div class="col-lg-7 px-5 text-start">
+          <div class="h-100 d-inline-flex align-items-center me-4">
+            <small class="fa fa-map-marker-alt text-primary me-2"></small>
+            <small>역삼동, 서울, 대한민국</small>
+          </div>
+          <div class="h-100 d-inline-flex align-items-center">
+            <small class="far fa-clock text-primary me-2"></small>
+            <small>Mon - Fri : 09.00 AM - 06.00 PM</small>
+          </div>
+        </div>
+        <div class="col-lg-5 px-5 text-end">
+          <div class="h-100 d-inline-flex align-items-center me-4">
+            <small class="fa fa-phone-alt text-primary me-2"></small>
+            <small>+012 345 6789</small>
+          </div>
+          <div class="h-100 d-inline-flex align-items-center mx-n2">
+            <a
+              class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary"
+              href=""
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a
+              class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary"
+              href=""
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a
+              class="btn btn-square btn-link rounded-0 border-0 border-end border-secondary"
+              href=""
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a class="btn btn-square btn-link rounded-0" href=""
+              ><i class="fab fa-instagram"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Topbar End -->
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
+      <a
+        href=""
+        class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5"
+      >
+        <h2 class="m-0">
+          <i class="fa fa-plane text-primary me-2"></i>Trippers
+        </h2>
+      </a>
+      <button
+        type="button"
+        class="navbar-toggler me-4"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+          <a href="" class="nav-item nav-link active">홈</a>
+
+          <a href="recommendation" class="nav-item nav-link">추천받기</a>
+
+          <div class="nav-item dropdown">
+            <a
+              href="#"
+              class="nav-link dropdown-toggle"
+              data-bs-toggle="dropdown"
+              >검색결과</a
+            >
+            <div class="dropdown-menu bg-light m-0">
+              <a href="feature" class="dropdown-item">항공권 검색결과</a>
+              <!-- 가능하다면 보여줬던 항공권 검색결과 페이지로 수정 -->
+              <a href="appointment" class="dropdown-item">숙박권 검색결과</a>
+              <!-- 가능하다면 보여줬던 숙박권 검색결과 페이지로 수정 -->
+            </div>
+          </div>
+          <a href="team" class="nav-item nav-link">Contact</a>
+        </div>
+        <a href="search" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
+          >계획 짜러 가기<i class="fa fa-arrow-right ms-3"></i
+        ></a>
+      </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Page Header Start -->
+    <div
+      class="container-fluid page-header py-6 my-6 mt-0 wow fadeIn"
+      data-wow-delay="0.1s"
+    >
+      <div class="container text-center">
+        <h1 class="display-4 text-white animated slideInDown mb-4">
+          추천 받기
+        </h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+          <ol class="breadcrumb justify-content-center mb-0">
+            <li class="breadcrumb-item">
+              <a class="text-white" href="#">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a class="text-white" href="#">Pages</a>
+            </li>
+            <li class="breadcrumb-item text-primary active" aria-current="page">
+              추천 받기
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- About Start -->
+    <div class="container-xxl py-6">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div
+              class="position-relative overflow-hidden ps-5 pt-5 h-100"
+              style="min-height: 400px"
+            >
+              <img
+                class="position-absolute w-100 h-100"
+                src="img/travel-noplan.jpg"
+                alt=""
+                style="object-fit: cover"
+              />
+              <img
+                class="position-absolute top-0 start-0 bg-white pe-3 pb-3"
+                src="img/about-small.jpg"
+                alt=""
+                style="width: 200px; height: 200px"
+              />
+            </div>
+          </div>
+          <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+            <div class="h-100">
+              <h6 class="text-primary text-uppercase mb-2">추천 받기</h6>
+              <!-- 여기 밑에서 부터 search form -->
+
+              <form
+                id="searchForm"
+                class="m-3"
+                action="/recommendation/result"
+                th:method="get"
+              >
+                <div class="form-group">
+                  <label for="departureDate">출발 날짜:</label>
+                  <input
+                    type="date"
+                    name="departureDate"
+                    id="departureDate"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="returnDate">도착 날짜:</label>
+                  <input
+                    type="date"
+                    name="returnDate"
+                    id="returnDate"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="budget">예산:</label>
+                  <input
+                    type="number"
+                    name="budget"
+                    id="budget"
+                    class="form-control"
+                    placeholder="※숫자만 입력해주세요! 예시: 500000 단위(KRW)"
+                  />
+                </div>
+                <br />
+                <button type="submit" class="btn btn-primary">추천 검색</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- About End -->
+
+    <!-- Footer Start -->
+    <div
+      class="container-fluid bg-dark text-light footer my-6 mb-0 py-0 wow fadeIn"
+      data-wow-delay="0.1s"
+    >
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-3 col-md-6">
+            <h2 class="text-primary mb-4">
+              <i class="fa fa-plane text-white me-2"></i>Trippers
+            </h2>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <p class="mb-2">
+              <i class="fa fa-map-marker-alt me-3"></i>역삼동, 서울, 대한민국
+            </p>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <p class="mb-2">
+              <i class="fa fa-phone-alt me-3"></i>+012 345 67890
+            </p>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <p class="mb-2">
+              <i class="fa fa-envelope me-3"></i>info@example.com
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Copyright Start -->
+    <div
+      class="container-fluid copyright text-light py-4 wow fadeIn"
+      data-wow-delay="0.1s"
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+            &copy; <a href="#">Trippers</a>, All Right Reserved.
+          </div>
+          <div class="col-md-6 text-center text-md-end">
+            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+            <br />Distributed By:
+            <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Copyright End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"
+      ><i class="bi bi-arrow-up"></i
+    ></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>
