@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Trippers</title>
+    <title>Trippers-home</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="keywords" />
     <meta content="" name="description" />
@@ -111,11 +111,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-          <a href="index1.html" class="nav-item nav-link active">홈</a>
+          <a href="index" class="nav-item nav-link active">홈</a>
           <!-- 홈 부분으로 수정필요 -->
-          <a href="about.html" class="nav-item nav-link">추천받기</a>
+          <a href="recommendation" class="nav-item nav-link">추천받기</a>
           <!-- 추천받기로 수정필요 -->
-          <a href="courses.html" class="nav-item nav-link"
+          <a href="courses" class="nav-item nav-link"
             >항공권 및 환율 변동 추이</a
           >
           <!-- 대시보드 페이지 수정필요-->
@@ -133,13 +133,13 @@
                 >숙박권 검색결과</a
               >
               <!-- 가능하다면 보여줬던 숙박권 검색결과 페이지로 수정 -->
-              <a href="team.html" class="dropdown-item">Our Team</a>
+              <a href="team" class="dropdown-item">팀원 소개</a>
               <!-- 가능하다면 팀원들 사진 모아서 팀원 소개 페이지로 수정 -->
             </div>
           </div>
-          <a href="contact.html" class="nav-item nav-link">Contact</a>
+          <a href="contact" class="nav-item nav-link">Contact</a>
         </div>
-        <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
+        <a href="search" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
           >계획 짜러 가기<i class="fa fa-arrow-right ms-3"></i
         ></a>
         <!-- 계획 짜러가기 수정 필요 -->
@@ -161,23 +161,22 @@
                       여행을 가는 가장 쉬운 방법
                     </h1>
                     <button
-                            type="button"
-                            class="btn btn-primary py-sm-3 px-sm-5"
-                            onclick="location.href='search.html'"
-                            th:onclick="|location.href='@{/search}'|"
+                      type="button"
+                      class="btn btn-primary py-sm-3 px-sm-5"
+                      onclick="location.href='search.html'"
+                      th:onclick="|location.href='@{/search}'|"
                     >
                       계획해서 가기
                     </button>
 
                     <button
-                            type="button"
-                            class="btn btn-light py-sm-3 px-sm-5 ms-3"
-                            onclick="location.href='recommendation.html'"
-                            th:onclick="|location.href='@{/recommendation}'|"
+                      type="button"
+                      class="btn btn-light py-sm-3 px-sm-5 ms-3"
+                      onclick="location.href='recommendation.html'"
+                      th:onclick="|location.href='@{/recommendation}'|"
                     >
                       추천받아 가기
                     </button>
-
                   </div>
                 </div>
               </div>
@@ -216,7 +215,7 @@
         <div class="row g-5">
           <div class="col-lg-3 col-md-6">
             <h2 class="text-primary mb-4">
-              <i class="fa fa-car text-white me-2"></i>Trippers
+              <i class="fa fa-plane text-white me-2"></i>Trippers
             </h2>
           </div>
           <div class="col-lg-3 col-md-6">

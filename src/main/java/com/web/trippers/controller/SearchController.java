@@ -31,9 +31,9 @@ public class SearchController {
         return "search";
     }
 
-    @GetMapping("/index1")
+    @GetMapping("/index")
     public String home(){
-        return "index1";
+        return "index";
     }
 
     //검색 결과
