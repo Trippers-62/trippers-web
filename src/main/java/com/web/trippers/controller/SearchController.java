@@ -31,13 +31,18 @@ public class SearchController {
         return "search";
     }
 
+    @GetMapping("/team")
+    public String getTeamInfo(){
+        return "team"; //templates-> html 파일 이름
+    }
+
     @GetMapping("/index")
     public String home(){
         return "index";
     }
 
     //검색 결과
-    @GetMapping("/search/result")
+//    @GetMapping("/search/result")
     public String getSearchResult(@ModelAttribute("searchForm") SearchForm searchForm, Model model, Pageable pageable){
 
         Pageable pageableWithFiveElementsSortByPrice = PageRequest.of(pageable.getPageNumber(), 10, Sort.by("price").ascending());
@@ -60,7 +65,7 @@ public class SearchController {
         return "searchResult";
     }
 
-//    @GetMapping("/search/result")
+    @GetMapping("/search/result")
     public String getSearchResult2(@ModelAttribute("searchForm") SearchForm searchForm, Model model, Pageable pageable){
 
         Pageable pageableWithFiveElementsSortByPrice = PageRequest.of(pageable.getPageNumber(), 10, Sort.by("price").ascending());
