@@ -1,6 +1,6 @@
 #!/bin/bash
 PROJECT_NAME="trippers"
-JAR_PATH="/home/ec2-user/app/trippers/build/libs/*.jar"
+JAR_PATH="/home/ec2-user/trippers/build/libs/*.jar"
 DEPLOY_PATH=/home/ec2-user/$PROJECT_NAME/
 DEPLOY_LOG_PATH="/home/ec2-user/$PROJECT_NAME/deploy.log"
 DEPLOY_ERR_LOG_PATH="/home/ec2-user/$PROJECT_NAME/deploy_err.log"
