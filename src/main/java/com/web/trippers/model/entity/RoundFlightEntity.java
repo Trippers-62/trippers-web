@@ -48,6 +48,17 @@ public class RoundFlightEntity {
     @Column(name = "transfer_count")
     private Integer transferCount;
 
+
+    @Column(name = "carrier_code")
+    private String carrierCode;
+
+    @Column(name = "cabin_class")
+    private String cabinClass;
+
+    @Column(name = "number_of_bookable_seats")
+    private Integer numberOfSeats;
+
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 

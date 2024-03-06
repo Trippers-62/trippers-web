@@ -20,8 +20,9 @@ public class RoundFlight extends Flight{
     public RoundFlight(Integer id, City departureCity, City arrivalCity, LocalDateTime departureDatetime,
                        City returnDepartureCity, City returnArrivalCity, LocalDateTime returnDepartureDatetime,
                        BigDecimal price, String airline, Integer transferCount,
+                       String carrierCode, String cabinClass, Integer numberOfSeats,
                        LocalDateTime createdAt, LocalDateTime updatedAt) {
-        super(id, departureCity, arrivalCity, departureDatetime, price, airline, transferCount, createdAt, updatedAt);
+        super(id, departureCity, arrivalCity, departureDatetime, price, airline, transferCount, carrierCode, cabinClass, numberOfSeats, createdAt, updatedAt);
 
         this.returnDepartureCity = returnDepartureCity;
         this.returnArrivalCity = returnArrivalCity;
@@ -41,6 +42,9 @@ public class RoundFlight extends Flight{
                 entity.getPrice(),
                 entity.getAirline(),
                 entity.getTransferCount(),
+                entity.getCarrierCode(),
+                entity.getCabinClass(),
+                entity.getNumberOfSeats(),
                 entity.getCreatedAt(),
                 entity.getUpdatedAt()
         );

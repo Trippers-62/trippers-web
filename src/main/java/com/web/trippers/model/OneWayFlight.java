@@ -15,9 +15,9 @@ import java.time.LocalDateTime;
 public class OneWayFlight extends Flight{
 
     public OneWayFlight(Integer id, City departureCity, City arrivalCity, LocalDateTime departureDatetime,
-                        BigDecimal price, String airline, Integer transferCount,
+                        BigDecimal price, String airline, Integer transferCount, String carrierCode, String cabinClass, Integer numberOfSeats,
                         LocalDateTime createdAt, LocalDateTime updatedAt) {
-        super(id, departureCity, arrivalCity, departureDatetime, price, airline, transferCount, createdAt, updatedAt);
+        super(id, departureCity, arrivalCity, departureDatetime, price, airline, transferCount, carrierCode, cabinClass, numberOfSeats, createdAt, updatedAt);
     }
 
     //OneWayFlightEntity -> OneWayFlight
@@ -30,6 +30,9 @@ public class OneWayFlight extends Flight{
                 entity.getPrice(),
                 entity.getAirline(),
                 entity.getTransferCount(),
+                entity.getCarrierCode(),
+                entity.getCabinClass(),
+                entity.getNumberOfSeats(),
                 entity.getCreatedAt(),
                 entity.getUpdatedAt()
         );

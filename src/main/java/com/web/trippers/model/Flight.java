@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 public class Flight {
+
     private Integer id;
     private City departureCity;
     private City arrivalCity;
@@ -22,6 +23,9 @@ public class Flight {
     private BigDecimal price;
     private String airline;
     private Integer transferCount;
+    private String carrierCode;
+    private String cabinClass;
+    private Integer numberOfSeats;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
