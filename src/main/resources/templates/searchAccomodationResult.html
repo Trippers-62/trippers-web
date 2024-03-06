@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trippers</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link th:href="@{/css/trippers.css}" rel="stylesheet" href="/css/trippers.css" />
+  </head>
+  <body class="main mb-5">
+    <header>
+      <nav th:replace="~{navbar :: header}"></nav>
+    </header>
+
+    <div class="container">
+      <h1 class="mt-5 m-3">숙박 검색 결과</h1>
+
+      <!-- Accommodation Results -->
+      <h5 class="mt-1 m-3">
+        도시 : <span th:text="${searchForm.arrivalCity}"></span>
+      </h5>
+
+      <div th:if="${searchForm.tripType == 'oneWay'}">
+        <h5 class="mt-1 m-3">
+          날짜 : <span th:text="${searchForm.departureDate}"></span>
+        </h5>
+
+        <table  class="table m-3">
+          <thead>
+          <tr>
+            <th scope="col">사진</th>
+            <th scope="col">이름</th>
+            <th scope="col">지역</th>
+            <th scope="col">가격</th>
+            <th scope="col">평점</th>
+            <th scope="col">체크인 날짜/시간</th>
+            <th scope="col">체크아웃 날짜/시간</th>
+            <th scope="col">링크</th>
+          </tr>
+          </thead>
+          <tbody>
+          <!-- Accommodation results rows will be dynamically populated here -->
+          <tr th:each="accomodation : ${accomodations}">
+            <td><img th:src="${accomodation.thumbnail}" alt="사진1" /></td>
+            <td th:text="${accomodation.name}">이름1</td>
+            <td th:text="${accomodation.location}">지역1</td>
+            <td th:text="${accomodation.price}">가격1</td>
+            <td th:text="${accomodation.rating}">평점1</td>
+            <td th:text="${accomodation.checkinDate}">체크인날짜1</td>
+            <td th:text="${accomodation.checkoutDate}">체크아웃날짜1</td>
+            <td><a th:href="${accomodation.link}" target="_blank" rel="noopener noreferrer" th:text="${accomodation.link}">링크1</a></td>
+          </tr>
+          </tbody>
+        </table>
+
+
+      </div>
+
+      <div th:if="${searchForm.tripType == 'roundTrip'}">
+        <div th:each="entry : ${accomodationsByDate}">
+          <h5 class="mt-1 m-3">
+            날짜 : <span th:text="${entry.key}"></span>
+          </h5>
+
+          <table  class="table m-3">
+            <thead>
+            <tr>
+              <th scope="col">사진</th>
+              <th scope="col">이름</th>
+              <th scope="col">지역</th>
+              <th scope="col">가격</th>
+              <th scope="col">평점</th>
+              <th scope="col">체크인 날짜/시간</th>
+              <th scope="col">체크아웃 날짜/시간</th>
+              <th scope="col">링크</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Accommodation results rows will be dynamically populated here -->
+            <tr th:each="accomodation : ${entry.value.content}">
+              <td><img th:src="${accomodation.thumbnail}" alt="사진1" /></td>
+              <td th:text="${accomodation.name}">이름1</td>
+              <td th:text="${accomodation.location}">지역1</td>
+              <td th:text="${accomodation.price}">가격1</td>
+              <td th:text="${accomodation.rating}">평점1</td>
+              <td th:text="${accomodation.checkinDate}">체크인날짜1</td>
+              <td th:text="${accomodation.checkoutDate}">체크아웃날짜1</td>
+              <td><a th:href="${accomodation.link}" target="_blank" rel="noopener noreferrer" th:text="${accomodation.link}">링크1</a></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+    </div>
+
+  </body>
+</html>

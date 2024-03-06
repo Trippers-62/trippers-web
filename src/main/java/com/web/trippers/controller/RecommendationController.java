@@ -28,18 +28,15 @@ public class RecommendationController {
     @GetMapping("/recommendation/result")
     public String getRecommendationResult(@ModelAttribute("searchForm") SearchForm searchForm, Model model, Pageable pageable){
 
-//        Page<Recommendation> recommendations = recommendationService.getOneDayRecommendations(searchForm, pageable);
         Page<CityRecommendation> recommendations = recommendationService.getCityRecommendations(searchForm, pageable);
-
         model.addAttribute("recommendations", recommendations);
 
         return "recommendationResult";
     }
 
 
-    //편도와 왕복 항공권에 따라 추천하기
 //    @GetMapping("/recommendation/result")
-//    public String getRecommendationResult(@ModelAttribute("searchForm") SearchForm searchForm, Model model, Pageable pageable){
+//    public String getRoundTripRecommendationResult(@ModelAttribute("searchForm") SearchForm searchForm, Model model, Pageable pageable){
 //
 //        if (searchForm.getTripType().equals("oneWay")){
 //
@@ -61,7 +58,6 @@ public class RecommendationController {
 //                }
 //            }
 //        }
-//
 //        return "recommendationResult2";
 //    }
 

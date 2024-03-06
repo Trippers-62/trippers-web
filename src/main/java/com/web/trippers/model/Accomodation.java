@@ -2,6 +2,7 @@ package com.web.trippers.model;
 
 import com.web.trippers.model.entity.AccomodationEntity;
 import com.web.trippers.model.entity.CityEntity;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -15,12 +16,15 @@ public class Accomodation {
 
     private Integer id;
     private City city;
-    private Float latitude;
-    private Float longitude;
+    private String name;
+    private String link;
+    private String location;
     private BigDecimal price;
     private BigDecimal rating;
     private LocalDate checkinDate;
     private LocalDate checkoutDate;
+    private Integer reviewCount;
+    private String thumbnail;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -29,12 +33,15 @@ public class Accomodation {
         return new Accomodation(
                 entity.getId(),
                 City.fromEntity(entity.getCity()),
-                entity.getLatitude(),
-                entity.getLongitude(),
+                entity.getName(),
+                entity.getLink(),
+                entity.getLocation(),
                 entity.getPrice(),
                 entity.getRating(),
                 entity.getCheckinDate(),
                 entity.getCheckoutDate(),
+                entity.getReviewCount(),
+                entity.getThumbnail(),
                 entity.getCreatedAt(),
                 entity.getUpdatedAt()
         );

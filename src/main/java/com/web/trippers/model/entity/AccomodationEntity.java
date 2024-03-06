@@ -27,13 +27,8 @@ public class AccomodationEntity {
     @Column(name = "link")
     private String link;
 
-    //TODO: 삭제여부 확인
-    @Column(name = "latitude")
-    private Float latitude;
-
-    //TODO: 삭제여부 확인
-    @Column(name = "longitude")
-    private Float longitude;
+    @Column(name = "location")
+    private String location;
 
     @Column(name = "price")
     private BigDecimal price;
