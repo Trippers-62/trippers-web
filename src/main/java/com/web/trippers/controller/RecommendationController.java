@@ -1,9 +1,6 @@
 package com.web.trippers.controller;
 
-import com.web.trippers.model.Accomodation;
-import com.web.trippers.model.Flight;
-import com.web.trippers.model.Recommendation;
-import com.web.trippers.model.RoundFlight;
+import com.web.trippers.model.*;
 import com.web.trippers.service.RecommendationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -31,7 +28,8 @@ public class RecommendationController {
     @GetMapping("/recommendation/result")
     public String getRecommendationResult(@ModelAttribute("searchForm") SearchForm searchForm, Model model, Pageable pageable){
 
-        Page<Recommendation> recommendations = recommendationService.getOneDayRecommendations(searchForm, pageable);
+//        Page<Recommendation> recommendations = recommendationService.getOneDayRecommendations(searchForm, pageable);
+        Page<CityRecommendation> recommendations = recommendationService.getCityRecommendations(searchForm, pageable);
 
         model.addAttribute("recommendations", recommendations);
 

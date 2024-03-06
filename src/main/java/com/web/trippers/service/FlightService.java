@@ -12,6 +12,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+
 @Service
 @RequiredArgsConstructor
 public class FlightService {
@@ -44,6 +46,16 @@ public class FlightService {
                 .map(RoundFlight::fromEntity);
 
     }
+
+    public Page<RoundFlight> getRoundFlightsByDepartureCityAndArrivalCityAndDepartureDate(CityEntity departureCityEntity, CityEntity arrivalCityEntity, LocalDate departureDate, LocalDate returnDate, Pageable pageable) {
+
+        return roundFlightEntityRepository
+                .findByDepartureCityAndArrivalCityAndDepartureDateAndReturnDate(
+                        departureCityEntity, arrivalCityEntity, departureDate, returnDate, pageable)
+                .map(RoundFlight::fromEntity);
+
+    }
+
 
     //TODO: test
     public Page<OneWayFlight> findAll(Pageable pageable) {

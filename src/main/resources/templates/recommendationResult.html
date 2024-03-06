@@ -17,26 +17,34 @@
       <div class="card">
         <div class="card-body">
           <!-- Flight details -->
+          <h5 class="card-title">도시 추천</h5>
+          <p class="card-text" th:text="${'출발 도시: ' + recommendation.departureCity.name}"></p>
+          <p class="card-text" th:text="${'도착 도시: ' + recommendation.arrivalCity.name}"></p>
+
           <h5 class="card-title">항공권 정보</h5>
-          <p class="card-text" th:text="${recommendation.flight.departureCity.name + ' - ' + recommendation.flight.arrivalCity.name}"></p>
-          <p class="card-text" th:text="${'Departure: ' + recommendation.flight.departureDatetime}"></p>
-          <p class="card-text" th:text="${'Price: ' + recommendation.flight.price}"></p>
-          <p class="card-text" th:text="${'Airline: ' + recommendation.flight.airline}"></p>
-          <p class="card-text" th:text="${'Transfer count: ' + recommendation.flight.transferCount}"></p>
-          <!-- Accommodation details -->
+          <p class="card-text" th:text="${'항공권 가격: ' + recommendation.flight.price}"></p>
+          <p class="card-text" th:text="${'항공사: ' + recommendation.flight.airline}"></p>
+
           <h5 class="card-title mt-4">숙소 정보</h5>
-          <p class="card-text" th:text="${recommendation.accomodation.city.name}"></p>
-          <p class="card-text" th:text="${'Latitude: ' + recommendation.accomodation.latitude}"></p>
-          <p class="card-text" th:text="${'Longitude: ' + recommendation.accomodation.longitude}"></p>
-          <p class="card-text" th:text="${'Price: ' + recommendation.accomodation.price}"></p>
-          <p class="card-text" th:text="${'Rating: ' + recommendation.accomodation.rating}"></p>
-          <p class="card-text" th:text="${'Check-in date: ' + recommendation.accomodation.checkinDate}"></p>
-          <p class="card-text" th:text="${'Check-out date: ' + recommendation.accomodation.checkoutDate}"></p>
+
+          <div th:each="accomodation : ${recommendation.accomodations}">
+            <div class="card mt-3">
+              <div class="card-body">
+                <h5 class="card-title">숙소 상세 정보</h5>
+                <p class="card-text" th:text="${'체크인 날짜: ' + accomodation.checkinDate}"></p>
+                <p class="card-text" th:text="${'체크아웃 날짜: ' + accomodation.checkoutDate}"></p>
+                <p class="card-text" th:text="${'가격: ' + accomodation.price}"></p>
+                <p class="card-text" th:text="${'평점: ' + accomodation.rating}"></p>
+
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
   </div>
-  <!-- Add more recommendation cards as needed -->
+
 </div>
 </body>
 </html>

@@ -71,6 +71,15 @@ public class AccomodationService {
                 .map(Accomodation::fromEntity);
     }
 
+    //특정한 도시와 날짜의 평점 기준 이상의 숙소 찾기
+    public Page<Accomodation> getBySpecificArrivalCityAndCheckinDateWithMinRating(CityEntity arrivalCity, LocalDate checkinDate, BigDecimal minRating, Pageable pageable) {
+
+        return accomodationEntityRepository
+                .findByArrivalCityAndCheckinDateWithMinRating(
+                        arrivalCity, checkinDate, minRating, pageable)
+                .map(Accomodation::fromEntity);
+    }
+
     public Page<Accomodation> findAll(Pageable pageable) {
 
         return accomodationEntityRepository
