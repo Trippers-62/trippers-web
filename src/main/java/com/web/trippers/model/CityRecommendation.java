@@ -3,6 +3,7 @@ package com.web.trippers.model;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Getter
@@ -13,5 +14,5 @@ public class CityRecommendation {
     private City arrivalCity;
     private Flight flight;
     private List<Accomodation> accomodations;
-
+    private BigDecimal totalPrice;
 }

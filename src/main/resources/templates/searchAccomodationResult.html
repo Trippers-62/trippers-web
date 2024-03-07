@@ -213,6 +213,27 @@
             </tr>
           </tbody>
         </table>
+
+        <div th:if="${accomodations.empty}">
+          <h3 class="m-3">
+            검색 결과가 없습니다.
+          </h3>
+        </div>
+
+        <!-- Pagination -->
+        <div th:if="${accomodations.totalPages > 1}">
+          <ul class="pagination">
+            <li class="page-item" th:each="i : ${#numbers.sequence(0, accomodations.totalPages - 1)}" th:class="${accomodations.number == i} ? 'active' : ''">
+              <a class="page-link" th:href="@{/search/result/accomodations(page=${i},
+            tripType=${searchForm.tripType},
+            departureCity=${searchForm.departureCity},
+            arrivalCity=${searchForm.arrivalCity},
+            departureDate=${searchForm.departureDate},
+            returnDate=${searchForm.returnDate})}" th:text="${i + 1}"></a>
+            </li>
+          </ul>
+        </div>
+
       </div>
 
       <div th:if="${searchForm.tripType == 'roundTrip'}">
@@ -254,6 +275,27 @@
               </tr>
             </tbody>
           </table>
+
+
+          <div th:if="${entry.value.empty}">
+            <h3 class="m-3">
+              검색 결과가 없습니다.
+            </h3>
+          </div>
+
+          <!-- Pagination -->
+          <div th:if="${entry.value.totalPages > 1}">
+            <ul class="pagination">
+              <li class="page-item" th:each="i : ${#numbers.sequence(0, entry.value.totalPages - 1)}" th:class="${entry.value.number == i} ? 'active' : ''">
+                <a class="page-link" th:href="@{/search/result/accomodations(page=${i},
+            tripType=${searchForm.tripType},
+            departureCity=${searchForm.departureCity},
+            arrivalCity=${searchForm.arrivalCity},
+            departureDate=${searchForm.departureDate},
+            returnDate=${searchForm.returnDate})}" th:text="${i + 1}"></a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

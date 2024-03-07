@@ -18,7 +18,7 @@ public class OneWayFlight extends Flight{
     public OneWayFlight(Integer id, City departureCity, City arrivalCity, LocalDateTime departureDatetime,
                         LocalDateTime arrivalDatetime,
                         BigDecimal price, String carrierCode, String cabinClass, Integer numberOfSeats,
-                        Integer departureTerminal, Integer arrivalTerminal, String duration,
+                        String departureTerminal, String arrivalTerminal, String duration,
                         LocalDateTime createdAt, LocalDateTime updatedAt) {
         super(id, departureCity, arrivalCity, departureDatetime, arrivalDatetime, price,
                 carrierCode, cabinClass, numberOfSeats,

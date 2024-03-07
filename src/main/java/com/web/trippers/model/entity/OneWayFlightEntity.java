@@ -44,10 +44,10 @@ public class OneWayFlightEntity {
     private Integer numberOfSeats;
 
     @Column(name = "departure_terminal")
-    private Integer departureTerminal;
+    private String departureTerminal;
 
     @Column(name = "arrival_terminal")
-    private Integer arrivalTerminal;
+    private String arrivalTerminal;
 
     @Column(name = "duration")
     private String duration;

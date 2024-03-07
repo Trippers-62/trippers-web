@@ -20,8 +20,8 @@ public class RoundFlight extends Flight{
     private String returnCarrierCode;
     private String returnCabinClass;
     private Integer returnNumberOfSeats;
-    private Integer returnDepartureTerminal;
-    private Integer returnArrivalTerminal;
+    private String returnDepartureTerminal;
+    private String returnArrivalTerminal;
     private String returnDuration;
 
     public RoundFlight(Integer id, City departureCity, City arrivalCity, LocalDateTime departureDatetime,
@@ -31,9 +31,9 @@ public class RoundFlight extends Flight{
                        LocalDateTime returnArrivalDatetime,
                        BigDecimal price,
                        String carrierCode, String cabinClass, Integer numberOfSeats,
-                       Integer departureTerminal, Integer arrivalTerminal, String duration,
+                       String departureTerminal, String arrivalTerminal, String duration,
                        String returnCarrierCode, String returnCabinClass, Integer returnNumberOfSeats,
-                       Integer returnDepartureTerminal, Integer returnArrivalTerminal, String returnDuration,
+                       String returnDepartureTerminal, String returnArrivalTerminal, String returnDuration,
                        LocalDateTime createdAt, LocalDateTime updatedAt) {
 
         super(id, departureCity, arrivalCity, departureDatetime, arrivalDatetime, price,

@@ -192,47 +192,78 @@
 
         <table th:if="${searchForm.tripType == 'oneWay'}" class="table m-3">
           <thead>
-            <tr>
-              <th scope="col">출발 날짜/시간</th>
-              <th scope="col">가격</th>
-              <th scope="col">항공사</th>
-              <th scope="col">환승 횟수</th>
-            </tr>
+          <tr>
+            <th scope="col">출발 날짜/시간</th>
+            <th scope="col">가격</th>
+            <th scope="col">좌석 등급</th>
+            <th scope="col">예약 가능한 좌석 수</th>
+            <th scope="col">항공기 코드</th>
+          </tr>
           </thead>
           <tbody>
-            <!-- Flight results rows will be dynamically populated here -->
-            <tr th:each="flight : ${flights}">
-              <td th:text="${flight.departureDatetime}">출발날짜1</td>
-              <td th:text="${flight.price}">가격1</td>
-              <td th:text="${flight.airline}">항공사1</td>
-              <td th:text="${flight.transferCount}">환승횟수1</td>
-            </tr>
-            <!-- Add more rows as needed -->
+          <!-- Flight results rows will be dynamically populated here -->
+          <tr th:each="flight : ${flights}">
+            <td th:text="${flight.departureDatetime}">출발날짜1</td>
+            <td th:text="${flight.price}">가격1</td>
+            <td th:text="${flight.cabinClass}">좌석등급1</td>
+            <td th:text="${flight.numberOfSeats}">예약가능한좌석수1</td>
+            <td th:text="${flight.carrierCode}">항공기코드1</td>
+          </tr>
+          <!-- Add more rows as needed -->
           </tbody>
         </table>
 
         <table th:if="${searchForm.tripType == 'roundTrip'}" class="table m-3">
           <thead>
-            <tr>
-              <th scope="col">출발 날짜/시간</th>
-              <th scope="col">귀국 날짜/시간</th>
-              <th scope="col">가격</th>
-              <th scope="col">항공사</th>
-              <th scope="col">환승 횟수</th>
-            </tr>
+          <tr>
+            <th scope="col">출발 날짜/시간</th>
+            <th scope="col">가격</th>
+            <th scope="col">좌석 등급</th>
+            <th scope="col">예약 가능한 좌석 수</th>
+            <th scope="col">항공기 코드</th>
+            <th scope="col">귀국 날짜/시간</th>
+            <th scope="col">귀국 좌석 등급</th>
+            <th scope="col">귀국 예약 가능한 좌석 수</th>
+            <th scope="col">귀국 항공기 코드</th>
+          </tr>
           </thead>
           <tbody>
-            <!-- Flight results rows will be dynamically populated here -->
-            <tr th:each="flight : ${flights}">
-              <td th:text="${flight.departureDatetime}">출발날짜1</td>
-              <td th:text="${flight.returnDepartureDatetime}">귀국날짜1</td>
-              <td th:text="${flight.price}">가격1</td>
-              <td th:text="${flight.airline}">항공사1</td>
-              <td th:text="${flight.transferCount}">환승횟수1</td>
-            </tr>
-            <!-- Add more rows as needed -->
+          <!-- Flight results rows will be dynamically populated here -->
+          <tr th:each="flight : ${flights}">
+            <td th:text="${flight.departureDatetime}">출발날짜1</td>
+            <td th:text="${flight.price}">가격1</td>
+            <td th:text="${flight.cabinClass}">좌석등급1</td>
+            <td th:text="${flight.numberOfSeats}">예약가능한좌석수1</td>
+            <td th:text="${flight.carrierCode}">항공기코드1</td>
+            <td th:text="${flight.returnDepartureDatetime}">귀국출발날짜1</td>
+            <td th:text="${flight.returnCabinClass}">귀국좌석등급1</td>
+            <td th:text="${flight.returnNumberOfSeats}">귀국예약가능한좌석수1</td>
+            <td th:text="${flight.returnCarrierCode}">귀국항공기코드1</td>
+          </tr>
+          <!-- Add more rows as needed -->
           </tbody>
         </table>
+
+        <div th:if="${flights.empty}">
+          <h3 class="m-3">
+            검색 결과가 없습니다.
+          </h3>
+        </div>
+
+        <!-- Pagination -->
+        <div th:if="${flights.totalPages > 1}">
+          <ul class="pagination">
+            <li class="page-item" th:each="i : ${#numbers.sequence(0, flights.totalPages - 1)}" th:class="${flights.number == i} ? 'active' : ''">
+              <a class="page-link" th:href="@{/search/result(page=${i},
+            tripType=${searchForm.tripType},
+            departureCity=${searchForm.departureCity},
+            arrivalCity=${searchForm.arrivalCity},
+            departureDate=${searchForm.departureDate},
+            returnDate=${searchForm.returnDate})}" th:text="${i + 1}"></a>
+            </li>
+          </ul>
+        </div>
+
 
         <form th:action="@{/search/result/accomodations}" method="get">
           <input

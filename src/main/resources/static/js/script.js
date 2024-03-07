@@ -60,29 +60,4 @@ document.addEventListener("DOMContentLoaded", function() {
     tripTypeRoundTrip.addEventListener('change', handleTripTypeChange);
     tripTypeOneWay.addEventListener('change', handleTripTypeChange);
 
-
-
-    // const form = document.getElementById('reservationForm');
-    // form.addEventListener('submit', function(event) {
-    //     event.preventDefault();
-    //     const departureCountry = departureCountrySelect.value;
-    //     const departureCity = departureCitySelect.value;
-    //     const arrivalCountry = arrivalCountrySelect.value;
-    //     const arrivalCity = arrivalCitySelect.value;
-    //     const departureDate = document.getElementById('departureDate').value;
-    //     const returnDate = document.getElementById('returnDate').value;
-    //     const budget = document.getElementById('budget').value;
-    //     const tripType = document.querySelector('input[name="tripType"]:checked').value;
-    //
-    //     // 출력
-    //     console.log('DepartureCountry:', departureCountry);
-    //     console.log('DepartureCity:', departureCity);
-    //     console.log('ArrivalCountry:', arrivalCountry);
-    //     console.log('ArrivalCity:', arrivalCity);
-    //     console.log('Departure Date:', departureDate);
-    //     console.log('Return Date:', returnDate);
-    //     console.log('Budget:', budget);
-    //     console.log('Trip Type:', tripType);
-    // });
-
 });

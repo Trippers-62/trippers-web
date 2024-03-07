@@ -167,44 +167,72 @@
     <!-- Page Header End -->
 
     <div class="container">
-      <h1 class="mt-5 m-3">항공권 및 숙박 검색 결과</h1>
+      <h1 class="mt-5 m-3">항공권 및 숙박 추천 결과</h1>
 
       <!-- Recommendations -->
       <div class="row">
         <!-- Display recommendation cards -->
         <div
-          class="col-md-6 mb-4"
-          th:each="recommendation : ${recommendations}"
-        >
+          class="col-md-12 mb-4"
+          th:each="recommendation, iterStat : ${recommendations}">
+          <h3 class="card-title m-3">추천 <span th:text="${iterStat.index + 1}"></span></h3>
+
           <div class="card">
             <div class="card-body">
               <!-- Flight details -->
-              <h5 class="card-title">도시 추천</h5>
-              <p
-                class="card-text"
-                th:text="${'출발 도시: ' + recommendation.departureCity.name}"
-              ></p>
-              <p
-                class="card-text"
-                th:text="${'도착 도시: ' + recommendation.arrivalCity.name}"
-              ></p>
-
-              <h5 class="card-title">항공권 정보</h5>
-              <p
-                class="card-text"
-                th:text="${'항공권 가격: ' + recommendation.flight.price}"
-              ></p>
-              <p
-                class="card-text"
-                th:text="${'항공사: ' + recommendation.flight.airline}"
-              ></p>
+              <div class="row">
+                <div class="col-md-4">
+                  <h5 class="card-title">도시 추천</h5>
+                  <p
+                          class="card-text"
+                          th:text="${'출발 도시: ' + recommendation.departureCity.name}"
+                  ></p>
+                  <p
+                          class="card-text"
+                          th:text="${'도착 도시: ' + recommendation.arrivalCity.name}"
+                  ></p>
+                  <p
+                          class="card-text"
+                          th:text="${'총 비용: ' + recommendation.totalPrice}"
+                  ></p>
+                </div>
+                <div class="col-md-4">
+                  <h5 class="card-title">출국 항공권 정보</h5>
+                  <p
+                          class="card-text"
+                          th:text="${'항공권 출발 날짜/시간: ' + recommendation.flight.departureDatetime}"
+                  ></p>
+                  <p
+                          class="card-text"
+                          th:text="${'항공기 코드: ' + recommendation.flight.carrierCode}"
+                  ></p>
+                  <p
+                          class="card-text"
+                          th:text="${'좌석 등급: ' + recommendation.flight.cabinClass}"
+                  ></p>
+                </div>
+                <div class="col-md-4">
+                  <h5 class="card-title">귀국 항공권 정보</h5>
+                  <p
+                          class="card-text"
+                          th:text="${'귀국 출발 날짜/시간: ' + recommendation.flight.returnDepartureDatetime}"
+                  ></p>
+                  <p
+                          class="card-text"
+                          th:text="${'귀국 좌석 등급: ' + recommendation.flight.returnCabinClass}"
+                  ></p>
+                  <p
+                          class="card-text"
+                          th:text="${'귀국 항공기 코드: ' + recommendation.flight.returnCarrierCode}"
+                  ></p>
+                </div>
+              </div>
 
               <h5 class="card-title mt-4">숙소 정보</h5>
 
               <div th:each="accomodation : ${recommendation.accomodations}">
                 <div class="card mt-3">
                   <div class="card-body">
-                    <h5 class="card-title">숙소 상세 정보</h5>
                     <p class="card-text">
                       <img th:src="${accomodation.thumbnail}" alt="사진1" />
                     </p>
@@ -248,6 +276,14 @@
           </div>
         </div>
       </div>
+
+      <div th:if="${recommendations.empty}">
+        <h3 class="m-3">
+          추천 결과가 없습니다.
+        </h3>
+      </div>
+
+
     </div>
 
     <!-- Footer Start -->

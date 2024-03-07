@@ -25,8 +25,8 @@ public class Flight {
     private String carrierCode;
     private String cabinClass;
     private Integer numberOfSeats;
-    private Integer departureTerminal;
-    private Integer arrivalTerminal;
+    private String departureTerminal;
+    private String arrivalTerminal;
     private String duration;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

@@ -58,10 +58,10 @@ public class RoundFlightEntity {
     private Integer numberOfSeats;
 
     @Column(name = "departure_terminal")
-    private Integer departureTerminal;
+    private String departureTerminal;
 
     @Column(name = "arrival_terminal")
-    private Integer arrivalTerminal;
+    private String arrivalTerminal;
 
     @Column(name = "duration")
     private String duration;
@@ -76,10 +76,10 @@ public class RoundFlightEntity {
     private Integer returnNumberOfSeats;
 
     @Column(name = "return_departure_terminal")
-    private Integer returnDepartureTerminal;
+    private String returnDepartureTerminal;
 
     @Column(name = "return_arrival_terminal")
-    private Integer returnArrivalTerminal;
+    private String returnArrivalTerminal;
 
     @Column(name = "return_duration")
     private String returnDuration;

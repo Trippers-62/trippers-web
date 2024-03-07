@@ -56,8 +56,6 @@ public class FlightService {
 
     }
 
-
-    //TODO: test
     public Page<OneWayFlight> findAll(Pageable pageable) {
         return oneWayFlightEntityRepository.findAll(pageable).map(OneWayFlight::fromEntity);
     }

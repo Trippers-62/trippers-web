@@ -25,43 +25,35 @@ public class SearchController {
     private final FlightService flightService;
     private final AccomodationService accomodationService;
 
-    //검색 폼
-    @GetMapping("/search")
-    public String getSearchForm(){
-        return "search";
-    }
-
-    @GetMapping("/team")
-    public String getTeamInfo(){
-        return "team"; //templates-> html 파일 이름
-    }
-
-    @GetMapping("/index")
-    public String home(){
-        return "index";
-    }
-
     //검색 결과
     @GetMapping("/search/result")
-    public String getSearchResult(@ModelAttribute("searchForm") SearchForm searchForm, Model model, Pageable pageable){
+    public String getSearchResult(@ModelAttribute("searchForm") SearchForm searchForm,
+                                  @RequestParam(name = "page", defaultValue = "0") int page,
+                                  Model model){
 
-        Pageable pageableWithFiveElementsSortByPrice = PageRequest.of(pageable.getPageNumber(), 10, Sort.by("price").ascending());
+        Pageable pageable = PageRequest.of(page, 5, Sort.by("price").ascending());
 
         //항공권 가져오기
         if (searchForm.getTripType().equals("oneWay")){
-            Page<OneWayFlight> flights = flightService.getOneWayFlights(searchForm, pageableWithFiveElementsSortByPrice);
+            Page<OneWayFlight> flights = flightService.getOneWayFlights(searchForm, pageable);
             model.addAttribute("flights", flights);
 
         } else if(searchForm.getTripType().equals("roundTrip")){
-            Page<RoundFlight> flights = flightService.getRoundFlights(searchForm, pageableWithFiveElementsSortByPrice);
+            Page<RoundFlight> flights = flightService.getRoundFlights(searchForm, pageable);
             model.addAttribute("flights", flights);
         }
 
         return "searchResult";
     }
 
+    //숙소 결과
     @GetMapping("/search/result/accomodations")
-    public String showAccomodations(@ModelAttribute("searchForm") SearchForm searchForm, Model model, Pageable pageable) {
+    public String showAccomodations(@ModelAttribute("searchForm") SearchForm searchForm,
+                                    @RequestParam(name = "page", defaultValue = "0") int page,
+                                    Model model) {
+
+        Pageable pageable = PageRequest.of(page, 5, Sort.by("price").ascending());
+
 
         if (searchForm.getTripType().equals("oneWay")){
             Page<Accomodation> accomodations = accomodationService.getAccomodationsByCityAndDate(searchForm, pageable);
