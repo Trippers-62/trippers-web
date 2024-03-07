@@ -187,7 +187,7 @@
           </div>
           <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
             <div class="h-100">
-              <h6 class="text-primary text-uppercase mb-2">계획 하기</h6>
+              <h2 class="text-primary text-uppercase mb-2">계획 하기</h2>
               <!-- 여기 밑에서 부터 search form -->
               <form
                 id="searchForm"
@@ -196,7 +196,7 @@
                 th:method="get"
               >
                 <div class="form-group">
-                  <label>여행 유형:</label><br />
+                  <label style="font-weight: bold">여행 유형:</label><br />
                   <div class="form-check form-check-inline">
                     <input
                       type="radio"
@@ -206,7 +206,12 @@
                       class="form-check-input"
                       checked
                     />
-                    <label for="roundTrip" class="form-check-label">왕복</label>
+                    <label
+                      for="roundTrip"
+                      class="form-check-label"
+                      style="font-weight: bold"
+                      >왕복</label
+                    >
                   </div>
                   <div class="form-check form-check-inline">
                     <input
@@ -216,13 +221,20 @@
                       value="oneWay"
                       class="form-check-input"
                     />
-                    <label for="oneWay" class="form-check-label">편도</label>
+                    <label
+                      for="oneWay"
+                      class="form-check-label"
+                      style="font-weight: bold"
+                      >편도</label
+                    >
                   </div>
                 </div>
                 <div class="row">
                   <div class="col">
                     <div class="form-group">
-                      <label for="departureCountry">출발 나라:</label>
+                      <label for="departureCountry" style="font-weight: bold"
+                        >출발 나라:</label
+                      >
                       <select
                         name="departureCountry"
                         id="departureCountry"
@@ -236,7 +248,9 @@
                   </div>
                   <div class="col">
                     <div class="form-group">
-                      <label for="departureCity">출발 도시:</label>
+                      <label for="departureCity" style="font-weight: bold"
+                        >출발 도시:</label
+                      >
                       <select
                         name="departureCity"
                         id="departureCity"
@@ -250,7 +264,9 @@
                 <div class="row">
                   <div class="col">
                     <div class="form-group">
-                      <label for="arrivalCountry">도착 나라:</label>
+                      <label for="arrivalCountry" style="font-weight: bold"
+                        >도착 나라:</label
+                      >
                       <select
                         name="arrivalCountry"
                         id="arrivalCountry"
@@ -264,7 +280,9 @@
                   </div>
                   <div class="col">
                     <div class="form-group">
-                      <label for="arrivalCity">도착 도시:</label>
+                      <label for="arrivalCity" style="font-weight: bold"
+                        >도착 도시:</label
+                      >
                       <select
                         name="arrivalCity"
                         id="arrivalCity"
@@ -277,7 +295,9 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="departureDate">출발하시는 날짜:</label>
+                  <label for="departureDate" style="font-weight: bold"
+                    >출발하시는 날짜:</label
+                  >
                   <input
                     type="date"
                     name="departureDate"
@@ -286,7 +306,9 @@
                   />
                 </div>
                 <div class="form-group">
-                  <label for="returnDate">돌아오시는 날짜:</label>
+                  <label for="returnDate" style="font-weight: bold"
+                    >돌아오시는 날짜:</label
+                  >
                   <input
                     type="date"
                     name="returnDate"
@@ -295,7 +317,13 @@
                   />
                 </div>
                 <br />
-                <button type="submit" class="btn btn-primary">검색</button>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  style="font-weight: bold"
+                >
+                  검색
+                </button>
               </form>
             </div>
           </div>
