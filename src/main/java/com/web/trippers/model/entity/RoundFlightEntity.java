@@ -28,6 +28,9 @@ public class RoundFlightEntity {
     @Column(name = "departure_datetime")
     private LocalDateTime departureDatetime;
 
+    @Column(name = "arrival_datetime")
+    private LocalDateTime arrivalDatetime;
+
     @ManyToOne
     @JoinColumn(name="return_departure_city_id")
     private CityEntity returnDepartureCity;
@@ -39,15 +42,11 @@ public class RoundFlightEntity {
     @Column(name = "return_departure_datetime")
     private LocalDateTime returnDepartureDatetime;
 
+    @Column(name = "return_arrival_datetime")
+    private LocalDateTime returnArrivalDatetime;
+
     @Column(name = "price")
     private BigDecimal price;
-
-    @Column(name = "airline")
-    private String airline;
-
-    @Column(name = "transfer_count")
-    private Integer transferCount;
-
 
     @Column(name = "carrier_code")
     private String carrierCode;
@@ -58,6 +57,32 @@ public class RoundFlightEntity {
     @Column(name = "number_of_bookable_seats")
     private Integer numberOfSeats;
 
+    @Column(name = "departure_terminal")
+    private Integer departureTerminal;
+
+    @Column(name = "arrival_terminal")
+    private Integer arrivalTerminal;
+
+    @Column(name = "duration")
+    private String duration;
+
+    @Column(name = "return_carrier_code")
+    private String returnCarrierCode;
+
+    @Column(name = "return_cabin_class")
+    private String returnCabinClass;
+
+    @Column(name = "return_number_of_bookable_seats")
+    private Integer returnNumberOfSeats;
+
+    @Column(name = "return_departure_terminal")
+    private Integer returnDepartureTerminal;
+
+    @Column(name = "return_arrival_terminal")
+    private Integer returnArrivalTerminal;
+
+    @Column(name = "return_duration")
+    private String returnDuration;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

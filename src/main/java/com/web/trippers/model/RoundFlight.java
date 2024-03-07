@@ -16,35 +16,69 @@ public class RoundFlight extends Flight{
     private City returnDepartureCity;
     private City returnArrivalCity;
     private LocalDateTime returnDepartureDatetime;
+    private LocalDateTime returnArrivalDatetime;
+    private String returnCarrierCode;
+    private String returnCabinClass;
+    private Integer returnNumberOfSeats;
+    private Integer returnDepartureTerminal;
+    private Integer returnArrivalTerminal;
+    private String returnDuration;
 
     public RoundFlight(Integer id, City departureCity, City arrivalCity, LocalDateTime departureDatetime,
-                       City returnDepartureCity, City returnArrivalCity, LocalDateTime returnDepartureDatetime,
-                       BigDecimal price, String airline, Integer transferCount,
+                       LocalDateTime arrivalDatetime,
+                       City returnDepartureCity, City returnArrivalCity,
+                       LocalDateTime returnDepartureDatetime,
+                       LocalDateTime returnArrivalDatetime,
+                       BigDecimal price,
                        String carrierCode, String cabinClass, Integer numberOfSeats,
+                       Integer departureTerminal, Integer arrivalTerminal, String duration,
+                       String returnCarrierCode, String returnCabinClass, Integer returnNumberOfSeats,
+                       Integer returnDepartureTerminal, Integer returnArrivalTerminal, String returnDuration,
                        LocalDateTime createdAt, LocalDateTime updatedAt) {
-        super(id, departureCity, arrivalCity, departureDatetime, price, airline, transferCount, carrierCode, cabinClass, numberOfSeats, createdAt, updatedAt);
+
+        super(id, departureCity, arrivalCity, departureDatetime, arrivalDatetime, price,
+                carrierCode, cabinClass, numberOfSeats,
+                departureTerminal, arrivalTerminal, duration, createdAt, updatedAt);
 
         this.returnDepartureCity = returnDepartureCity;
         this.returnArrivalCity = returnArrivalCity;
         this.returnDepartureDatetime = returnDepartureDatetime;
+        this.returnArrivalDatetime = returnArrivalDatetime;
+        this.returnCarrierCode = returnCarrierCode;
+        this.returnCabinClass = returnCabinClass;
+        this.returnNumberOfSeats = returnNumberOfSeats;
+        this.returnDepartureTerminal = returnDepartureTerminal;
+        this.returnArrivalTerminal = returnArrivalTerminal;
+        this.returnDuration = returnDuration;
+
     }
 
     //RoundFlightEntity -> RoundFlight
+
     public static RoundFlight fromEntity(RoundFlightEntity entity) {
         return new RoundFlight(
                 entity.getId(),
                 City.fromEntity(entity.getDepartureCity()),
                 City.fromEntity(entity.getArrivalCity()),
                 entity.getDepartureDatetime(),
+                entity.getArrivalDatetime(),
                 City.fromEntity(entity.getReturnDepartureCity()),
                 City.fromEntity(entity.getReturnArrivalCity()),
                 entity.getReturnDepartureDatetime(),
+                entity.getReturnArrivalDatetime(),
                 entity.getPrice(),
-                entity.getAirline(),
-                entity.getTransferCount(),
                 entity.getCarrierCode(),
                 entity.getCabinClass(),
                 entity.getNumberOfSeats(),
+                entity.getDepartureTerminal(),
+                entity.getArrivalTerminal(),
+                entity.getDuration(),
+                entity.getReturnCarrierCode(),
+                entity.getReturnCabinClass(),
+                entity.getReturnNumberOfSeats(),
+                entity.getReturnDepartureTerminal(),
+                entity.getReturnArrivalTerminal(),
+                entity.getReturnDuration(),
                 entity.getCreatedAt(),
                 entity.getUpdatedAt()
         );

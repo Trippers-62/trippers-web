@@ -28,14 +28,11 @@ public class OneWayFlightEntity {
     @Column(name = "departure_datetime")
     private LocalDateTime departureDatetime;
 
+    @Column(name = "arrival_datetime")
+    private LocalDateTime arrivalDatetime;
+
     @Column(name = "price")
     private BigDecimal price;
-
-    @Column(name = "airline")
-    private String airline;
-
-    @Column(name = "transfer_count")
-    private Integer transferCount;
 
     @Column(name = "carrier_code")
     private String carrierCode;
@@ -45,6 +42,15 @@ public class OneWayFlightEntity {
 
     @Column(name = "number_of_bookable_seats")
     private Integer numberOfSeats;
+
+    @Column(name = "departure_terminal")
+    private Integer departureTerminal;
+
+    @Column(name = "arrival_terminal")
+    private Integer arrivalTerminal;
+
+    @Column(name = "duration")
+    private String duration;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

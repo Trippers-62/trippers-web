@@ -1,6 +1,7 @@
 package com.web.trippers.model;
 
 import com.web.trippers.model.entity.OneWayFlightEntity;
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,9 +16,14 @@ import java.time.LocalDateTime;
 public class OneWayFlight extends Flight{
 
     public OneWayFlight(Integer id, City departureCity, City arrivalCity, LocalDateTime departureDatetime,
-                        BigDecimal price, String airline, Integer transferCount, String carrierCode, String cabinClass, Integer numberOfSeats,
+                        LocalDateTime arrivalDatetime,
+                        BigDecimal price, String carrierCode, String cabinClass, Integer numberOfSeats,
+                        Integer departureTerminal, Integer arrivalTerminal, String duration,
                         LocalDateTime createdAt, LocalDateTime updatedAt) {
-        super(id, departureCity, arrivalCity, departureDatetime, price, airline, transferCount, carrierCode, cabinClass, numberOfSeats, createdAt, updatedAt);
+        super(id, departureCity, arrivalCity, departureDatetime, arrivalDatetime, price,
+                carrierCode, cabinClass, numberOfSeats,
+                departureTerminal, arrivalTerminal, duration,
+                createdAt, updatedAt);
     }
 
     //OneWayFlightEntity -> OneWayFlight
@@ -27,12 +33,14 @@ public class OneWayFlight extends Flight{
                 City.fromEntity(entity.getDepartureCity()),
                 City.fromEntity(entity.getArrivalCity()),
                 entity.getDepartureDatetime(),
+                entity.getArrivalDatetime(),
                 entity.getPrice(),
-                entity.getAirline(),
-                entity.getTransferCount(),
                 entity.getCarrierCode(),
                 entity.getCabinClass(),
                 entity.getNumberOfSeats(),
+                entity.getDepartureTerminal(),
+                entity.getArrivalTerminal(),
+                entity.getDuration(),
                 entity.getCreatedAt(),
                 entity.getUpdatedAt()
         );

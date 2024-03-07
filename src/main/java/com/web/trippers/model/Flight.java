@@ -20,12 +20,14 @@ public class Flight {
     private City departureCity;
     private City arrivalCity;
     private LocalDateTime departureDatetime;
+    private LocalDateTime arrivalDatetime;
     private BigDecimal price;
-    private String airline;
-    private Integer transferCount;
     private String carrierCode;
     private String cabinClass;
     private Integer numberOfSeats;
+    private Integer departureTerminal;
+    private Integer arrivalTerminal;
+    private String duration;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
