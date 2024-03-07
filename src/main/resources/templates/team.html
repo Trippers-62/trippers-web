@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Trippers-contact</title>
@@ -95,7 +95,8 @@
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
       <a
-        href=""
+        href="/index"
+        th:href="@{/index}"
         class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5"
       >
         <h2 class="m-0">
@@ -112,27 +113,23 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-          <a href="" class="nav-item nav-link active">홈</a>
+          <a href="/index" th:href="@{/index}" class="nav-item nav-link">홈</a>
 
-          <a href="recommendation" class="nav-item nav-link">추천받기</a>
+          <a
+            href="/recommendation"
+            th:href="@{/recommendation}"
+            class="nav-item nav-link"
+            >추천받기</a
+          >
 
-          <div class="nav-item dropdown">
-            <a
-              href="#"
-              class="nav-link dropdown-toggle"
-              data-bs-toggle="dropdown"
-              >검색결과</a
-            >
-            <div class="dropdown-menu bg-light m-0">
-              <a href="feature" class="dropdown-item">항공권 검색결과</a>
-              <!-- 가능하다면 보여줬던 항공권 검색결과 페이지로 수정 -->
-              <a href="appointment" class="dropdown-item">숙박권 검색결과</a>
-              <!-- 가능하다면 보여줬던 숙박권 검색결과 페이지로 수정 -->
-            </div>
-          </div>
-          <a href="team" class="nav-item nav-link">Contact</a>
+          <a href="/team" th:href="@{/team}" class="nav-item nav-link"
+            >팀원소개</a
+          >
         </div>
-        <a href="search" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
+        <a
+          href="/search"
+          th:href="@{/search}"
+          class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
           >계획 짜러 가기<i class="fa fa-arrow-right ms-3"></i
         ></a>
       </div>
@@ -182,7 +179,7 @@
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
             <div class="team-item position-relative">
               <div class="position-relative">
-                <img class="img-fluid" src="img/team-1.jpg" alt="" />
+                <img class="img-fluid" src="img/jw.png" alt="" />
                 <div class="team-social text-center">
                   <a
                     class="btn btn-square btn-outline-primary border-2 m-1"
@@ -202,15 +199,15 @@
                 </div>
               </div>
               <div class="bg-light text-center p-4">
-                <h5 class="mt-2">Full Name</h5>
-                <span>Trainer</span>
+                <h5 class="mt-2">여재우</h5>
+                <span>jaewoo98y@gmail.com</span>
               </div>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
             <div class="team-item position-relative">
               <div class="position-relative">
-                <img class="img-fluid" src="img/team-2.jpg" alt="" />
+                <img class="img-fluid" src="img/hyuk.png" alt="" />
                 <div class="team-social text-center">
                   <a
                     class="btn btn-square btn-outline-primary border-2 m-1"
@@ -230,15 +227,15 @@
                 </div>
               </div>
               <div class="bg-light text-center p-4">
-                <h5 class="mt-2">Full Name</h5>
-                <span>Trainer</span>
+                <h5 class="mt-2">김 혁</h5>
+                <span>jg31109@naver.com</span>
               </div>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
             <div class="team-item position-relative">
               <div class="position-relative">
-                <img class="img-fluid" src="img/team-3.jpg" alt="" />
+                <img class="img-fluid" src="img/hyunghu.png" alt="" />
                 <div class="team-social text-center">
                   <a
                     class="btn btn-square btn-outline-primary border-2 m-1"
@@ -258,15 +255,15 @@
                 </div>
               </div>
               <div class="bg-light text-center p-4">
-                <h5 class="mt-2">Full Name</h5>
-                <span>Trainer</span>
+                <h5 class="mt-2">김형후</h5>
+                <span>k2koo7896@naver.com</span>
               </div>
             </div>
           </div>
           <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
             <div class="team-item position-relative">
               <div class="position-relative">
-                <img class="img-fluid" src="img/team-4.jpg" alt="" />
+                <img class="img-fluid" src="img/hyunjin.png" alt="" />
                 <div class="team-social text-center">
                   <a
                     class="btn btn-square btn-outline-primary border-2 m-1"
@@ -286,8 +283,36 @@
                 </div>
               </div>
               <div class="bg-light text-center p-4">
-                <h5 class="mt-2">Full Name</h5>
-                <span>Trainer</span>
+                <h5 class="mt-2">양현진</h5>
+                <span>hyunj2034@naver.com</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+            <div class="team-item position-relative">
+              <div class="position-relative">
+                <img class="img-fluid" src="img/ohyung.png" alt="" />
+                <div class="team-social text-center">
+                  <a
+                    class="btn btn-square btn-outline-primary border-2 m-1"
+                    href=""
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                  <a
+                    class="btn btn-square btn-outline-primary border-2 m-1"
+                    href=""
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                  <a
+                    class="btn btn-square btn-outline-primary border-2 m-1"
+                    href=""
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                </div>
+              </div>
+              <div class="bg-light text-center p-4">
+                <h5 class="mt-2">정오영</h5>
+                <span>joh213590@gmail.com</span>
               </div>
             </div>
           </div>

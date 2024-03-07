@@ -95,7 +95,8 @@
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
       <a
-        href=""
+        href="/index"
+        th:href="@{/index}"
         class="navbar-brand d-flex align-items-center border-end px-4 px-lg-5"
       >
         <h2 class="m-0">
@@ -112,27 +113,23 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-          <a href="" class="nav-item nav-link active">홈</a>
+          <a href="/index" th:href="@{/index}" class="nav-item nav-link">홈</a>
 
-          <a href="recommendation" class="nav-item nav-link">추천받기</a>
+          <a
+            href="/recommendation"
+            th:href="@{/recommendation}"
+            class="nav-item nav-link"
+            >추천받기</a
+          >
 
-          <div class="nav-item dropdown">
-            <a
-              href="#"
-              class="nav-link dropdown-toggle"
-              data-bs-toggle="dropdown"
-              >검색결과</a
-            >
-            <div class="dropdown-menu bg-light m-0">
-              <a href="feature" class="dropdown-item">항공권 검색결과</a>
-              <!-- 가능하다면 보여줬던 항공권 검색결과 페이지로 수정 -->
-              <a href="appointment" class="dropdown-item">숙박권 검색결과</a>
-              <!-- 가능하다면 보여줬던 숙박권 검색결과 페이지로 수정 -->
-            </div>
-          </div>
-          <a href="team" class="nav-item nav-link">Contact</a>
+          <a href="/team" th:href="@{/team}" class="nav-item nav-link"
+            >팀원소개</a
+          >
         </div>
-        <a href="search" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
+        <a
+          href="/search"
+          th:href="@{/search}"
+          class="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
           >계획 짜러 가기<i class="fa fa-arrow-right ms-3"></i
         ></a>
       </div>
@@ -191,8 +188,11 @@
           <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
             <div class="h-100">
               <h6 class="text-primary text-uppercase mb-2">추천 받기</h6>
+              <p>
+                날짜와 예산은 정했지만 어디가실지 고민이시라면 <br />
+                Trippers에서 항공권 부터 숙박권 지역 까지 추천해드립니다
+              </p>
               <!-- 여기 밑에서 부터 search form -->
-
               <form
                 id="searchForm"
                 class="m-3"
@@ -200,7 +200,7 @@
                 th:method="get"
               >
                 <div class="form-group">
-                  <label for="departureDate">출발 날짜:</label>
+                  <label for="departureDate">출발하시는 날짜:</label>
                   <input
                     type="date"
                     name="departureDate"
@@ -209,7 +209,7 @@
                   />
                 </div>
                 <div class="form-group">
-                  <label for="returnDate">도착 날짜:</label>
+                  <label for="returnDate">도착하시는 날짜:</label>
                   <input
                     type="date"
                     name="returnDate"
