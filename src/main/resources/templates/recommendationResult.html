@@ -174,8 +174,11 @@
         <!-- Display recommendation cards -->
         <div
           class="col-md-12 mb-4"
-          th:each="recommendation, iterStat : ${recommendations}">
-          <h3 class="card-title m-3">추천 <span th:text="${iterStat.index + 1}"></span></h3>
+          th:each="recommendation, iterStat : ${recommendations}"
+        >
+          <h3 class="card-title m-3">
+            추천 <span th:text="${iterStat.index + 1}"></span>
+          </h3>
 
           <div class="card">
             <div class="card-body">
@@ -184,46 +187,46 @@
                 <div class="col-md-4">
                   <h5 class="card-title">도시 추천</h5>
                   <p
-                          class="card-text"
-                          th:text="${'출발 도시: ' + recommendation.departureCity.name}"
+                    class="card-text"
+                    th:text="${'출발 도시: ' + recommendation.departureCity.name}"
                   ></p>
                   <p
-                          class="card-text"
-                          th:text="${'도착 도시: ' + recommendation.arrivalCity.name}"
+                    class="card-text"
+                    th:text="${'도착 도시: ' + recommendation.arrivalCity.name}"
                   ></p>
                   <p
-                          class="card-text"
-                          th:text="${'총 비용: ' + recommendation.totalPrice}"
+                    class="card-text"
+                    th:text="${'총 비용: ' + recommendation.totalPrice}"
                   ></p>
                 </div>
                 <div class="col-md-4">
                   <h5 class="card-title">출국 항공권 정보</h5>
                   <p
-                          class="card-text"
-                          th:text="${'항공권 출발 날짜/시간: ' + recommendation.flight.departureDatetime}"
+                    class="card-text"
+                    th:text="${'항공권 출발 날짜/시간: ' + recommendation.flight.departureDatetime}"
                   ></p>
                   <p
-                          class="card-text"
-                          th:text="${'항공기 코드: ' + recommendation.flight.carrierCode}"
+                    class="card-text"
+                    th:text="${'항공기 코드: ' + recommendation.flight.carrierCode}"
                   ></p>
                   <p
-                          class="card-text"
-                          th:text="${'좌석 등급: ' + recommendation.flight.cabinClass}"
+                    class="card-text"
+                    th:text="${'좌석 등급: ' + recommendation.flight.cabinClass}"
                   ></p>
                 </div>
                 <div class="col-md-4">
                   <h5 class="card-title">귀국 항공권 정보</h5>
                   <p
-                          class="card-text"
-                          th:text="${'귀국 출발 날짜/시간: ' + recommendation.flight.returnDepartureDatetime}"
+                    class="card-text"
+                    th:text="${'귀국 출발 날짜/시간: ' + recommendation.flight.returnDepartureDatetime}"
                   ></p>
                   <p
-                          class="card-text"
-                          th:text="${'귀국 좌석 등급: ' + recommendation.flight.returnCabinClass}"
+                    class="card-text"
+                    th:text="${'귀국 좌석 등급: ' + recommendation.flight.returnCabinClass}"
                   ></p>
                   <p
-                          class="card-text"
-                          th:text="${'귀국 항공기 코드: ' + recommendation.flight.returnCarrierCode}"
+                    class="card-text"
+                    th:text="${'귀국 항공기 코드: ' + recommendation.flight.returnCarrierCode}"
                   ></p>
                 </div>
               </div>
@@ -265,8 +268,7 @@
                         th:href="${accomodation.link}"
                         target="_blank"
                         rel="noopener noreferrer"
-                        th:text="${accomodation.link}"
-                        >링크1</a
+                        >숙소 예약하기</a
                       >
                     </p>
                   </div>
@@ -278,12 +280,8 @@
       </div>
 
       <div th:if="${recommendations.empty}">
-        <h3 class="m-3">
-          추천 결과가 없습니다.
-        </h3>
+        <h3 class="m-3">추천 결과가 없습니다.</h3>
       </div>
-
-
     </div>
 
     <!-- Footer Start -->
