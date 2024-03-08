@@ -251,27 +251,6 @@
         </div>
 
         <!-- Pagination -->
-        <!-- <div th:if="${flights.totalPages > 1}">
-          <ul class="pagination">
-            <li
-              class="page-item"
-              th:each="i : ${#numbers.sequence(0, flights.totalPages - 1)}"
-              th:class="${flights.number == i} ? 'active' : ''"
-            >
-              <a
-                class="page-link"
-                th:href="@{/search/result(page=${i},
-            tripType=${searchForm.tripType},
-            departureCity=${searchForm.departureCity},
-            arrivalCity=${searchForm.arrivalCity},
-            departureDate=${searchForm.departureDate},
-            returnDate=${searchForm.returnDate})}"
-                th:text="${i + 1}"
-              ></a>
-            </li>
-          </ul>
-        </div> -->
-        <!-- Pagination -->
         <div th:if="${flights.totalPages > 1}">
           <ul class="pagination">
             <li

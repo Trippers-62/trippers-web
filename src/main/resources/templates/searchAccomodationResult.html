@@ -241,7 +241,7 @@
       </div>
 
       <div th:if="${searchForm.tripType == 'roundTrip'}">
-        <div th:each="entry : ${accomodationsByDate}">
+        <div class="mb-5" th:each="entry : ${accomodationsByDate}">
           <h5 class="mt-1 m-3">날짜 : <span th:text="${entry.key}"></span></h5>
 
           <table class="table m-3">
@@ -284,26 +284,6 @@
           </div>
 
           <!-- Pagination -->
-          <!-- <div th:if="${entry.value.totalPages > 1}">
-            <ul class="pagination">
-              <li
-                class="page-item"
-                th:each="i : ${#numbers.sequence(0, entry.value.totalPages - 1)}"
-                th:class="${entry.value.number == i} ? 'active' : ''"
-              >
-                <a
-                  class="page-link"
-                  th:href="@{/search/result/accomodations(page=${i},
-            tripType=${searchForm.tripType},
-            departureCity=${searchForm.departureCity},
-            arrivalCity=${searchForm.arrivalCity},
-            departureDate=${searchForm.departureDate},
-            returnDate=${searchForm.returnDate})}"
-                  th:text="${i + 1}"
-                ></a>
-              </li>
-            </ul>
-          </div> -->
           <div th:if="${entry.value.totalPages > 1}">
             <ul class="pagination">
               <!-- 이전 버튼 -->
