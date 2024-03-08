@@ -11,7 +11,6 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Getter
-@Setter
 @ToString(callSuper = true)
 public class OneWayFlight extends Flight{
 

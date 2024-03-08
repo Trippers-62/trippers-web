@@ -56,7 +56,7 @@ public class FlightService {
 
     }
 
-    public Page<OneWayFlight> findAll(Pageable pageable) {
+    public Page<OneWayFlight> findAllOneWayFlights(Pageable pageable) {
         return oneWayFlightEntityRepository.findAll(pageable).map(OneWayFlight::fromEntity);
     }
 

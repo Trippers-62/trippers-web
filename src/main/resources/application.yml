@@ -9,17 +9,8 @@ spring:
   jpa:
     database: mysql
     hibernate:
-#      ddl-auto: create
       ddl-auto: update
     properties:
       hibernate:
         show_sql: true
         format_sql: true
-
-  batch:
-    jdbc:
-      initialize-schema: always
-
-#  logging:
-#    level:
-#      org.hibernate.SQL: debug

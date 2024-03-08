@@ -18,6 +18,7 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 @Service
 @RequiredArgsConstructor
@@ -41,7 +42,8 @@ public class AccomodationService {
     //여러 날짜의 숙소 찾기
     public Map<LocalDate,Page<Accomodation>> getAccomodationsBetweenDepartureDateAndReturnDate(SearchForm searchForm, Pageable pageable) {
 
-        Map<LocalDate, Page<Accomodation>> accomodationsByDate = new HashMap<>();
+        //날짜 순서로 입력될 수 있게 TreeMap 사용
+        Map<LocalDate, Page<Accomodation>> accomodationsByDate = new TreeMap<>();
 
         CityEntity city = cityEntityRepository.findByName(searchForm.getArrivalCity());
         LocalDate startDate = searchForm.getDepartureDate();
@@ -57,6 +59,7 @@ public class AccomodationService {
 
             accomodationsByDate.put(date, accomodations);
         }
+
 
         return accomodationsByDate;
     }
