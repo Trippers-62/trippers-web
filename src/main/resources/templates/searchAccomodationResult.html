@@ -186,8 +186,8 @@
               <th scope="col">지역</th>
               <th scope="col">가격</th>
               <th scope="col">평점</th>
-              <th scope="col">체크인 날짜/시간</th>
-              <th scope="col">체크아웃 날짜/시간</th>
+              <th scope="col">체크인</th>
+              <th scope="col">체크아웃</th>
               <th scope="col">링크</th>
             </tr>
           </thead>
@@ -206,8 +206,7 @@
                   th:href="${accomodation.link}"
                   target="_blank"
                   rel="noopener noreferrer"
-                  th:text="${accomodation.link}"
-                  >링크1</a
+                  >숙소 예약하기</a
                 >
               </td>
             </tr>
@@ -215,25 +214,30 @@
         </table>
 
         <div th:if="${accomodations.empty}">
-          <h3 class="m-3">
-            검색 결과가 없습니다.
-          </h3>
+          <h3 class="m-3">검색 결과가 없습니다.</h3>
         </div>
 
         <!-- Pagination -->
         <div th:if="${accomodations.totalPages > 1}">
           <ul class="pagination">
-            <li class="page-item" th:each="i : ${#numbers.sequence(0, accomodations.totalPages - 1)}" th:class="${accomodations.number == i} ? 'active' : ''">
-              <a class="page-link" th:href="@{/search/result/accomodations(page=${i},
+            <li
+              class="page-item"
+              th:each="i : ${#numbers.sequence(0, accomodations.totalPages - 1)}"
+              th:class="${accomodations.number + 1 == i} ? 'active' : ''"
+            >
+              <a
+                class="page-link"
+                th:href="@{/search/result/accomodations(page=${i},
             tripType=${searchForm.tripType},
             departureCity=${searchForm.departureCity},
             arrivalCity=${searchForm.arrivalCity},
             departureDate=${searchForm.departureDate},
-            returnDate=${searchForm.returnDate})}" th:text="${i + 1}"></a>
+            returnDate=${searchForm.returnDate})}"
+                th:text="${i + 1}"
+              ></a>
             </li>
           </ul>
         </div>
-
       </div>
 
       <div th:if="${searchForm.tripType == 'roundTrip'}">
@@ -243,14 +247,14 @@
           <table class="table m-3">
             <thead>
               <tr>
-                <th scope="col">사진</th>
-                <th scope="col">이름</th>
-                <th scope="col">지역</th>
-                <th scope="col">가격</th>
-                <th scope="col">평점</th>
-                <th scope="col">체크인 날짜/시간</th>
-                <th scope="col">체크아웃 날짜/시간</th>
-                <th scope="col">링크</th>
+                <th scope="col" class="wide-column">사진</th>
+                <th scope="col" class="wide-column">이름</th>
+                <th scope="col" class="wide-column">지역</th>
+                <th scope="col" class="wide-column">가격</th>
+                <th scope="col" class="wide-column">평점</th>
+                <th scope="col" class="wide-column">체크인</th>
+                <th scope="col" class="wide-column">체크아웃</th>
+                <th scope="col" class="wide-column">링크</th>
               </tr>
             </thead>
             <tbody>
@@ -268,31 +272,86 @@
                     th:href="${accomodation.link}"
                     target="_blank"
                     rel="noopener noreferrer"
-                    th:text="${accomodation.link}"
-                    >링크1</a
+                    >숙소 예약 하기</a
                   >
                 </td>
               </tr>
             </tbody>
           </table>
 
-
           <div th:if="${entry.value.empty}">
-            <h3 class="m-3">
-              검색 결과가 없습니다.
-            </h3>
+            <h3 class="m-3">검색 결과가 없습니다.</h3>
           </div>
 
           <!-- Pagination -->
-          <div th:if="${entry.value.totalPages > 1}">
+          <!-- <div th:if="${entry.value.totalPages > 1}">
             <ul class="pagination">
-              <li class="page-item" th:each="i : ${#numbers.sequence(0, entry.value.totalPages - 1)}" th:class="${entry.value.number == i} ? 'active' : ''">
-                <a class="page-link" th:href="@{/search/result/accomodations(page=${i},
+              <li
+                class="page-item"
+                th:each="i : ${#numbers.sequence(0, entry.value.totalPages - 1)}"
+                th:class="${entry.value.number == i} ? 'active' : ''"
+              >
+                <a
+                  class="page-link"
+                  th:href="@{/search/result/accomodations(page=${i},
             tripType=${searchForm.tripType},
             departureCity=${searchForm.departureCity},
             arrivalCity=${searchForm.arrivalCity},
             departureDate=${searchForm.departureDate},
-            returnDate=${searchForm.returnDate})}" th:text="${i + 1}"></a>
+            returnDate=${searchForm.returnDate})}"
+                  th:text="${i + 1}"
+                ></a>
+              </li>
+            </ul>
+          </div> -->
+          <div th:if="${entry.value.totalPages > 1}">
+            <ul class="pagination">
+              <!-- 이전 버튼 -->
+              <li class="page-item">
+                <a
+                  class="page-link"
+                  th:if="${entry.value.number > 0}"
+                  th:href="@{/search/result/accomodations(page=${entry.value.number - 1},
+                        tripType=${searchForm.tripType},
+                        departureCity=${searchForm.departureCity},
+                        arrivalCity=${searchForm.arrivalCity},
+                        departureDate=${searchForm.departureDate},
+                        returnDate=${searchForm.returnDate})}"
+                  th:text="이전"
+                ></a>
+              </li>
+
+              <!-- 페이지 번호 -->
+              <li
+                class="page-item"
+                th:each="i : ${#numbers.sequence(entry.value.number / 5 * 5, (entry.value.number / 5 * 5) + 4)}"
+                th:class="${entry.value.number + 1 == i} ? 'active' : ''"
+              >
+                <a
+                  class="page-link"
+                  th:href="@{/search/result/accomodations(page=${i},
+                        tripType=${searchForm.tripType},
+                        departureCity=${searchForm.departureCity},
+                        arrivalCity=${searchForm.arrivalCity},
+                        departureDate=${searchForm.departureDate},
+                        returnDate=${searchForm.returnDate})}"
+                  th:text="${i + 1}"
+                ></a>
+              </li>
+
+              <!-- 다음 버튼 -->
+              <li class="page-item">
+                <a
+                  class="page-link"
+                  th:if="${entry.value.number < entry.value.totalPages - 1}"
+                  th:href="@{/search/result/accomodations(page=${entry.value.number + 1},
+                        tripType=${searchForm.tripType},
+                        departureCity=${searchForm.departureCity},
+                        arrivalCity=${searchForm.arrivalCity},
+                        departureDate=${searchForm.departureDate},
+                        returnDate=${searchForm.returnDate})}"
+                  th:text="다음"
+                ></a>
               </li>
             </ul>
           </div>
