@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trippers</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/src/main/resources/static/css/trippers.css" />
+    <style>
+      /* 대시보드를 표시할 영역의 스타일 */
+      #dashboard-container {
+        width: 100%;
+        height: 600px; /* 대시보드의 원하는 높이로 조정 */
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="index.html">
+              <img
+                src="/src/main/resources/static/img/logo-removeword.png"
+                alt="로고"
+                class="logo"
+              />
+              홈</a
+            >
+          </li>
+          <!-- index.html -->
+          <li><a href="search.html">일정 짜기</a></li>
+          <!-- search.html -->
+          <li><a href="search.html">추천 받기</a></li>
+          <!-- search.html -->
+          <li><a href="flight_calender.html">날짜별 최저가</a></li>
+          <!-- 출발 날짜별 항공권 가격 -->
+          <li><a href="exchange_rate.html">실시간 환율정보</a></li>
+          <!-- 환율변동 대시보드 -->
+        </ul>
+      </nav>
+    </header>
+    <h1>Superset 대시보드</h1>
+
+    <div id="dashboard-container">
+      <!-- Superset 대시보드를 표시할 영역 -->
+      <!-- 아래의 iframe 코드를 대시보드의 URL로 설정 -->
+      <iframe
+        src="대시보드_URL"
+        width="100%"
+        height="100%"
+        frameborder="0"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <script>
+      // 추가적인 JavaScript 코드
+    </script>
+  </body>
+</html>

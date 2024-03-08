@@ -1,0 +1,116 @@
+/* 전체 페이지 스타일 */
+.main body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+/* 네비게이션 바 스타일 */
+.main header {
+  background-color: #003580;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  margin: 0 auto;
+  width: 1200px;
+}
+
+.main nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.main nav li {
+  margin: 0 10px;
+}
+
+.main nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.main nav a:hover {
+  text-decoration: solid;
+}
+
+/* 로고 스타일 */
+.main .logo {
+  max-width: 100px;
+  max-height: 20px;
+}
+
+.main .logo-image {
+  max-width: 100px;
+  height: 60px;
+}
+
+/* 메인 컨텐츠 스타일 */
+.main .main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 제목 스타일 */
+.main h1 {
+  color: #333;
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* 폼 스타일 */
+.main form {
+  margin-top: 30px;
+}
+
+.main label {
+  font-weight: bold;
+}
+
+.main .form-group {
+  margin-bottom: 20px;
+}
+
+.main .form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* 버튼 스타일 */
+.main .btn-primary {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #003580;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.main .btn-primary:hover {
+  background-color: #002b5a;
+}
+
+.main .main_container {
+  margin: 10px;
+  border: lime;
+}
+
+.main .logo-container {
+  text-align: center;
+  padding: auto;
+  margin: auto;
+}

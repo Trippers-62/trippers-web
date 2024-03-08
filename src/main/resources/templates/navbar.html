@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:href="@{/css/styles.css}" href="/css/styles.css" rel="stylesheet" />
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/css/trippers.css}" rel="stylesheet" href="/css/trippers.css" />
+</head>
+<body >
+<!--class="navbar navbar-expand navbar-dark bg-dark"-->
+    <nav class="main" th:fragment="header">
+        <ul>
+            <li>
+                <a href="/" th:href="@{/}">
+                    <img
+                            src="/img/logo-removeword.png"
+                            th:src="@{/img/logo-removeword.png}"
+                            th:alt="로고"
+                            alt="로고"
+                            class="logo"
+                    />
+                    홈</a
+                >
+            </li>
+            <!-- index.html -->
+            <li><a href="/search" th:href="@{/search}">일정 짜기</a></li>
+            <!-- search.html -->
+            <li><a href="/search" th:href="@{/recommendation}">추천 받기</a></li>
+            <!-- search.html -->
+            <li><a href="/flight_calender" th:href="@{/search}">날짜별 최저가</a></li>
+            <!-- 출발 날짜별 항공권 가격 -->
+            <li><a href="/exchange_rate" th:href="@{/search}">실시간 환율정보</a></li>
+            <!-- 환율변동 대시보드 -->
+        </ul>
+    </nav>
+
+</body>
+
+</html>

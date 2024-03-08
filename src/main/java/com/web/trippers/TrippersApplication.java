@@ -10,4 +10,5 @@ public class TrippersApplication {
 		SpringApplication.run(TrippersApplication.class, args);
 	}
 
+
 }
