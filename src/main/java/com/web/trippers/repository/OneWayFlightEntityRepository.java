@@ -23,7 +23,8 @@ public interface OneWayFlightEntityRepository extends JpaRepository<OneWayFlight
     @Query("SELECT o FROM OneWayFlightEntity o WHERE DATE(o.departureDatetime) = :departureDate")
     Page<OneWayFlightEntity> findByDepartureDate(@Param("departureDate") LocalDate departureDate, Pageable pageable);
 
-    @Query("SELECT o FROM OneWayFlightEntity o WHERE DATE(o.departureDatetime) = :departureDate AND o.departureCity = :departureCity AND o.arrivalCity = :arrivalCity")
+    //arrival <-> departure
+    @Query("SELECT o FROM OneWayFlightEntity o WHERE DATE(o.departureDatetime) = :departureDate AND o.arrivalCity = :departureCity AND o.departureCity = :arrivalCity")
     Page<OneWayFlightEntity> findByDepartureCityAndArrivalCityAndDepartureDate(
             @Param("departureCity") CityEntity departureCity,
             @Param("arrivalCity") CityEntity arrivalCity,
