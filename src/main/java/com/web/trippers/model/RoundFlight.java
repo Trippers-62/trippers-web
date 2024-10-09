@@ -1,7 +1,13 @@
 package com.web.trippers.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.web.trippers.model.entity.RoundFlightEntity;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -10,12 +16,21 @@ import java.time.LocalDateTime;
 
 @Getter
 @ToString(callSuper = true)
+@NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class RoundFlight extends Flight{
 
     private City returnDepartureCity;
     private City returnArrivalCity;
+
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime returnDepartureDatetime;
+
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime returnArrivalDatetime;
+
     private String returnCarrierCode;
     private String returnCabinClass;
     private Integer returnNumberOfSeats;
